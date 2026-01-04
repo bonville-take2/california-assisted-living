@@ -1,0 +1,72 @@
+RCFE SCRAPER - SETUP INSTRUCTIONS
+=================================
+
+SIMPLE VERSION:
+---------------
+Follow these steps to get the scraper working:
+
+1. Install the required tool (Playwright):
+   Open your terminal and run these commands:
+
+   pip3 install -r requirements.txt
+   playwright install chromium
+
+2. Run the scraper:
+
+   python3 rcfe_scraper.py
+
+3. Watch it work!
+   A browser window will open automatically, go to the website,
+   and download the file. The file will be saved in a folder called "data"
+
+4. Find your downloaded data:
+   Look in the "data" folder - you'll see two files:
+   - rcfe_data_YYYYMMDD_HHMMSS.csv (timestamped version)
+   - rcfe_data_latest.csv (always the most recent download)
+
+
+TECHNICAL VERSION:
+------------------
+1. Install dependencies:
+   pip3 install -r requirements.txt
+   playwright install chromium
+
+2. Run the scraper:
+   python3 rcfe_scraper.py
+
+   The script will:
+   - Launch a Chromium browser instance
+   - Navigate to the CCLD download page
+   - Locate and click the RCFE download link
+   - Handle the confirmation dialog
+   - Download the file to ./data directory
+   - Save both timestamped and "latest" versions
+
+3. Configuration options:
+   - To run in background (no visible browser):
+     Edit rcfe_scraper.py, line 32, change headless=False to headless=True
+
+   - To change download directory:
+     Edit rcfe_scraper.py, line 9, change default download_dir value
+
+
+SETTING UP WEEKLY AUTOMATION:
+-----------------------------
+SIMPLE: To make this run automatically every week, we'll need to set up
+a scheduled task. Let me know when you're ready for that step!
+
+TECHNICAL: Use cron (macOS/Linux) or Task Scheduler (Windows) to schedule
+weekly execution. Example cron entry for Monday at 9 AM:
+0 9 * * 1 cd /Users/anneneville-bonilla/Documents/claude-test && /usr/bin/python3 rcfe_scraper.py
+
+
+TROUBLESHOOTING:
+---------------
+- If the browser doesn't open: Make sure playwright browsers are installed
+  Run: playwright install chromium
+
+- If it can't find the RCFE link: The website structure may have changed.
+  The script tries multiple strategies to find it. Check the error output.
+
+- If download fails: Check your internet connection and that the CCLD
+  website is accessible.

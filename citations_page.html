@@ -1,0 +1,857 @@
+<!DOCTYPE html><html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths js no-flexbox flexbox-legacy canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths" lang="en"><head><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+    <!--
+        Customize the content security policy in the meta tag below as needed. Add 'unsafe-inline' to default-src to enable inline JavaScript.
+        For details, see http://go.microsoft.com/fwlink/?LinkID=617521
+    -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Security-Policy" content="default-src *  data: gap: https://localhost http://localhost:59224 https://maps.googleapis.com http://www.ccld.ca.gov http://*.google-analytics.com https://*.google-analytics.com https://sectest.dss.ca.gov https://secure.dss.ca.gov https://www.google.com https://ssl.gstatic.com 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://use.fontawesome.com; font-src 'self' 'unsafe-inline' https://use.fontawesome.com; media-src *">
+    <script>document.write('<base href="' + document.location + '" />');</script><base href="https://www.ccld.dss.ca.gov/carefacilitysearch/?Rewrite=FacDetail%2F015601302">
+    <!-- TODONote  fix base href for appropiate deployment-->
+    <!--<base href="/TransparencyApp/" />-->
+
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=2, minimum-scale=1, width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <title>Social Services - Community Care Facility search</title>
+
+    <meta charset="utf-8">
+
+    <meta name="Author" content="Department of Social Services, State of California">
+    <meta name="Description" content="Care facility search">
+    <meta name="Keywords" content="California, government, elder care, child care">
+
+
+
+    <!-- http://t.co/dKP3o1e -->
+    <meta name="HandheldFriendly" content="True"> <!-- for Blackberry, AvantGo -->
+    <meta name="MobileOptimized" content="320"> <!-- for Windows mobile -->
+    <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0">
+
+
+    <!-- For all browsers -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!--
+    Step 3
+    Select a color scheme:
+
+    <link rel="stylesheet" href="/CountySite/css/colorscheme_oceanside.css">
+    <link rel="stylesheet" href="/CountySite/css/colorscheme_orangecounty.css">
+    <link rel="stylesheet" href="/CountySite/css/colorscheme_pasorobles.css">
+    <link rel="stylesheet" href="/CountySite/css/colorscheme_santabarbara.css">
+    <link rel="stylesheet" href="/CountySite/css/colorscheme_sierra.css">
+    -->
+    <!-- county --><!--link rel="stylesheet" href="css/colorscheme_pasorobles_mod2.css"-->
+    <!-- public -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <!--<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">-->
+    <link rel="stylesheet" href="css/colorscheme_santabarbara.css">
+
+
+    <link rel="stylesheet" media="print" href="css/print.css">
+    <!-- For progressively larger displays -->
+    <link rel="stylesheet" media="only screen and (min-width: 480px)" href="css/480.css">
+    <link rel="stylesheet" media="only screen and (min-width: 600px)" href="css/600.css">
+    <link rel="stylesheet" media="only screen and (min-width: 768px)" href="css/768.css">
+    <!-- <link rel="stylesheet" media="only screen and (min-width: 992px)" href="/css/992.css"> -->
+    <link rel="stylesheet" media="only screen and (min-width: 1280px)" href="css/1280.css">
+    <!-- For Retina displays -->
+    <!-- <link rel="stylesheet" media="only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (min-device-pixel-ratio: 1.5)" href="/css/2x.css"> -->
+    <!-- selectivizr.com, emulates CSS3 pseudo-classes and attribute selectors in Internet Explorer 6-8 -->
+    <!--[if (lt IE 9) & (!IEMobile)]>
+    <script src="/javascript/libs/selectivizr-min.js"></script>
+    <![endif]-->
+    <!-- modernizr.com, feature detection -->
+    <script src="scripts/libs/modernizr-2.0.6.min.js"></script>
+
+    <!-- For iPad 3-->
+    <link rel="apple-touch-icon" sizes="144x144" href="images/template2013/apple-touch-icon-144x144.png">
+    <!-- For iPhone 4 -->
+    <link rel="apple-touch-icon" sizes="114x114" href="images/template2013/apple-touch-icon-114x114.png">
+    <!-- For iPad 1-->
+    <link rel="apple-touch-icon" sizes="72x72" href="images/template2013/apple-touch-icon-72x72.png">
+    <!-- For iPhone 3G, iPod Touch and Android -->
+    <link rel="apple-touch-icon" href="images/template2013/apple-touch-icon-57x57.png">
+    <!-- For Nokia -->
+    <link rel="shortcut icon" href="images/template2013/apple-touch-icon-57x57.png">
+    <!-- For everything else -->
+    <link rel="shortcut icon" href="images/favicon.ico">
+
+    <!--Microsoft. Activate ClearType. Use highest compatibility mode, enable Chrome Frame -->
+    <!--[if IE]>
+    <meta http-equiv="cleartype" content="on">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script src="/javascript/libs/respond.min.js"></script>
+    <![endif]-->
+    <!-- Styles.Render("~/Content/themes/base/css") -->
+
+
+    <link href="css/select.css" rel="stylesheet"><!-- angular select style sheet-->
+    <link href="css/select2.css" rel="stylesheet"><!-- angular select style sheet-->
+    <link href="css/selectize.default.css" rel="stylesheet"><!-- angular select style sheet-->
+    <link href="css/angular-tooltips.css" rel="stylesheet"><!-- angular select style sheet-->
+    <!--    <link href="css/themes/sunny/jquery-ui-1.10.4.custom.css" rel="stylesheet" />-->
+
+    <link href="css/ReactTablecss/bootstrap-glyphicons.css" rel="stylesheet">
+    <link href="css/ReactTablecss/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/ReactTablecss/bootstrap.css" rel="stylesheet">
+    <link href="css/ReactTablecss/bootstrapSwitch.css" rel="stylesheet">
+
+    <!--<link href="css/jquery.qtip.css" rel="stylesheet" />
+    <link href="css/jquery.sBubble-0.1.1.css" rel="stylesheet" />
+
+    <link href="css/ReactTablecss/footable.core.min.css" rel="stylesheet" />-->
+    <!--link href="/CountySite/Content/site.css" rel="stylesheet" /-->
+    <!--   <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.css">-->
+    <!--<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2.css">-->
+    <!--<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.default.css">-->
+
+    <link rel="stylesheet" href="css/transparency.css">
+
+    <script type="text/javascript" src="scripts/angular.js"></script>
+    <script type="text/javascript" src="scripts/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="scripts/angular-sanitize.min.js"></script>
+    <script type="text/javascript" src="scripts/angular-animate.min.js"></script>
+    <script type="text/javascript" src="scripts/angular-tooltips.js"></script>
+    <script type="text/javascript" src="scripts/select.min.js"></script> <!-- angular select-->
+    <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+    <script type="text/javascript" src="scripts/ui-bootstrap-tpls-0.10.js"></script>
+    <script type="text/javascript" src="scripts/xml2json.js"></script>
+    <script type="text/javascript" src="javascript/GALocalStorage.js"></script>
+
+    <!--<script type="text/javascript" src="scripts/js.1.10/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>-->
+    <script type="text/javascript" src="javascript/Config.js"></script>
+    <script type="text/javascript" src="javascript/scripts.js"></script>
+    <script type="text/javascript" src="javascript/tree.js"></script>
+    <script type="text/javascript" src="javascript/index.js"></script>
+    <script type="text/javascript" src="javascript/GALocalStorage.js"></script>
+    <script type="text/javascript" src="javascript/transparencyApp.js"></script>
+
+    <script type="text/javascript" src="javascript/Controller/facListController.js"></script>
+    <script type="text/javascript" src="javascript/Controller/footerController.js"></script>
+    <script type="text/javascript" src="javascript/Controller/searchController.js"></script>
+    <script type="text/javascript" src="javascript/Controller/groupController.js"></script>
+    <script type="text/javascript" src="javascript/Controller/glossaryController.js"></script>
+    <script type="text/javascript" src="javascript/Controller/phoneHeaderController.js"></script>
+    <script type="text/javascript" src="javascript/Controller/facDetailController.js"></script>
+    <script type="text/javascript" src="javascript/Controller/emailController.js"></script>
+    <script type="text/javascript" src="javascript/Controller/downloadController.js"></script>
+    <script type="text/javascript" src="javascript/Controller/faqController.js"></script>
+    <script type="text/javascript" src="javascript/Controller/announcementController.js"></script>
+
+
+    <script type="text/javascript" src="scripts/modernizr-2.5.3.js"></script>
+
+<style type="text/css" media="">#navigation.phone_show_nav {	height:240px;}</style></head>
+
+
+<body ng-app="transparencyApp" class="clearfix ng-scope">
+   
+
+
+
+    <!-- ui-view-anchor --><div ui-view="" autoscroll="false" class="" style=""><!-- ui-view-anchor --><div ui-view="header" autoscroll="false" class="ng-scope"><div ng-controller="phone_hdrController" class="ng-scope">
+    <header role="banner" class="phoneHeader">
+        <div id="skip_to_content"><a href="#main_content">Skip to Main Content</a></div>
+
+
+        <div class="phone_hdr" ng-click="menu_click()">
+            <div class="phone_hd_left">
+                <a class="p_h_button p_h_menu" id="ResponsiveMenu" ng-click="toggle = !toggle"><img src="images/template2013/clear.gif" alt="Menu"></a>
+            </div>
+            <div class="phone_hd_right">
+                <a class="p_h_button p_h_contact" href="/FacilityInquiry.html"><img src="images/template2013/clear.gif" alt="Contact Us"></a>
+                <a class="p_h_button p_h_search" id="ResponsiveSearch" ng-click="toggle_search()"><img src="images/template2013/clear.gif" alt="Search"></a>
+            </div>
+            <div class="logo_and_banner">
+                <div class="head_cagov_logo"><a target="_blank" href="http://www.ca.gov/"><img src="images/template2013/header-ca.gov.png" alt="CA.gov"></a></div>
+                <div class="head_organization_banner"><a target="_blank" href="http://www.cdss.ca.gov/"><img src="images/template2013/header_organization.png" alt="Organization Title"></a></div>
+            </div>
+        </div>
+
+
+        <!-- Using padding alternative to replace the DownloadData Menu option by Victor Wong 2/4/2015	-->
+        <nav id="navigation" ng-class="{phone_show_nav: toggle}">
+            <!-- ngIf: TransparencyMode == 'Public' --><div ng-if="TransparencyMode == 'Public'" class="ng-scope">
+                <ul id="nav_list">
+                    <li><a ui-sref="index" class="nav_level1_link" href="/"><span id="nav_home_container"></span><img src="images/template2013/clear.gif" alt="Home">&nbsp;</a></li>
+                    <li class="homeLink"><a ui-sref="index" class="nav_level1_link" href="/">Home</a></li>
+                    <li><a ui-sref="downloaddata" class="nav_level1_link" href="/DownloadData">Download Data</a></li>
+                    <li><a href="https://cdss.ca.gov/inforesources/community-care-licensing" target="_blank" class="nav_level1_link">State Offices</a></li>
+                    <li><a ui-sref="faqlist({id:'full'})" class="nav_level1_link" href="/FAQList/full">FAQ</a></li>
+                    <li><a ui-sref="glossary" class="nav_level1_link" href="/Glossary">Glossary</a></li>
+                </ul>
+            </div><!-- end ngIf: TransparencyMode == 'Public' -->
+            <!-- ngIf: TransparencyMode == 'County' -->
+        </nav>
+
+        <div id="img_ribbon"></div>
+    </header>
+    <div ng-class="spacerclass" class="menucollapsed"></div>
+</div></div>
+
+<!-- ui-view-anchor --><div ui-view="main" autoscroll="false" class="ng-scope"><div id="main_content" class="clearfix ng-scope" ng-controller="facDetailController as ctrl">
+    <div class="content_left_column clearfix">
+        <div class="add_maincontent_padding">
+            <!-- InstanceBeginEditable name="MainContent" -->
+            <div class="container_style_b">
+                <h4>Facility Detail</h4>
+                <!-- ngIf: ctrl.FACILITYINFO.FACILITYNUMBER == 'Facility Number Not Found' -->
+                <div class="add_side_padding" ng-show="ctrl.FACILITYINFO.FACILITYNUMBER != 'Facility Number Not Found'">
+                    <span ng-show="!ctrl.isLoaded" class="ng-hide" style=""><img class="spinnerimg" src="images/spinner.gif" alt="Loading, please wait">Please wait, loading data</span>
+                    <table ng-show="ctrl.isLoaded" border="0" role="presentation" class="" style="">
+                        <colgroup>
+                        <col span="1" class="widewidth">
+                        <col span="2" class="narrowwidth">
+                        </colgroup>
+                        <tbody><tr>
+                            <td class="boldchar ng-binding">ACACIA CREEK - UNION CITY &nbsp; <input ng-click="ctrl.gotoSubscribe()" id="btnStayUpdated" type="button" value="Stay Updated" style=""></td>
+                            <td>
+                                Status:
+                                <!-- ngIf: ctrlFACILITYINFO.STATUS != '' --><span ng-if="ctrlFACILITYINFO.STATUS != ''" ng-class="ctrl.FACILITYINFO.STATUS" class="ng-binding ng-scope Licensed" style="">Licensed</span><!-- end ngIf: ctrlFACILITYINFO.STATUS != '' -->
+                                <!-- ngIf: ctrl.FACILITYINFO.STATUS == 'Pending' -->
+                                <!-- ngIf: ctrl.FACILITYINFO.STATUS == 'Probation' -->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="bigWarning ng-binding">
+                                <!-- ngIf: ctrl.TSOMESSAGE -->
+                                
+                                <!-- ngIf: ctrl.TSOMESSAGE -->
+                            </td>
+                            <td>
+                                Lic. Date:
+                                <!-- ngIf: ctrl.FACILITYINFO.LICENSEFIRSTDATE == '' && ctrl.FACILITYINFO.STATUS == 'Licensed' -->
+                                <!-- ngIf: ctrl.FACILITYINFO.LICENSEFIRSTDATE == '' && ctrl.FACILITYINFO.STATUS == 'Pending' -->
+                                <!-- ngIf: ctrl.FACILITYINFO.LICENSEFIRSTDATE != '' --><span ng-if="ctrl.FACILITYINFO.LICENSEFIRSTDATE != ''" class="ng-binding ng-scope">5/20/2010</span><!-- end ngIf: ctrl.FACILITYINFO.LICENSEFIRSTDATE != '' -->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="boldchar">Address:</td>
+                            <!-- ngIf: ctrl.FACILITYINFO.STATUS.indexOf('Closed') > -1 -->
+                        </tr>
+                        <tr>
+                            <td class="ng-binding">34400 MISSION BLVD.</td>
+                            <!-- ngIf: ctrl.FACILITYINFO.STATUS.indexOf('Closed') > -1 -->
+                        </tr>
+
+                        <!-- ngIf: ctrl.FACILITYINFO.STREETADDRESS != 'See FAQs' --><tr ng-if="ctrl.FACILITYINFO.STREETADDRESS != 'See FAQs'" class="ng-scope"> <td class="ng-binding">UNION CITY,&nbsp;CA&nbsp;94587</td> <td>&nbsp;</td> </tr><!-- end ngIf: ctrl.FACILITYINFO.STREETADDRESS != 'See FAQs' -->
+                        <tr> <td class="ng-binding">Licensee Name: MASONIC HOMES CAL &amp; ACACIA CREEK, MASONIC SEN LIV</td><td>&nbsp;</td></tr>
+                        <tr> <td> &nbsp;</td><td>&nbsp;</td></tr>
+                    </tbody></table>
+
+                    <table border="0" role="presentation">
+                        <tbody><tr> <td class="boldchar" style="width: 100px;">Phone:</td><td class="ng-binding">(510) 441-3700</td><td></td><td></td> </tr>
+                        <tr> <td class="boldchar">Facility&nbsp;Number:</td><td class="ng-binding">015601302</td><td></td><td></td> </tr>
+                        <tr> <td class="boldchar"><!-- ngIf: ctrl.FACILITYINFO.FACILITYTYPE != 'FOSTER FAMILY AGENCY' --><span ng-if="ctrl.FACILITYINFO.FACILITYTYPE != 'FOSTER FAMILY AGENCY'" class="ng-scope">Facility&nbsp;Capacity:</span><!-- end ngIf: ctrl.FACILITYINFO.FACILITYTYPE != 'FOSTER FAMILY AGENCY' --><!-- ngIf: ctrl.FACILITYINFO.FACILITYTYPE=='FOSTER FAMILY AGENCY' --></td><td class="ng-binding">376 </td> <td></td><td></td> </tr>
+                        <tr> <td class="boldchar">Facility&nbsp;Type:</td><td class="ng-binding">RCFE-CONTINUING CARE RETIREMENT COMMUNITY</td>  <td></td><td></td> </tr>
+                        <tr> <td>&nbsp;</td><td></td><td></td><td></td> </tr>
+
+                        <!-- ro data -->
+                        <tr><td colspan="4" class="boldchar"><!-- tooltips: --><tooltip tooltip-template-url="tooltips/state-licensing.html" tooltip-side="top" tooltip-size="medium" class="tooltips _top _steady _ready"><tip-cont><span class="ng-scope">State Licensing Office Contact Information <img class="statelic" src="images/q_mark-1.gif" alt="Question Mark"></span></tip-cont><tip class=""><tip-tip class="_medium"><span id="close-button" style="display: none;">×</span><strong class="ng-scope">Contact this State License Office for additional information about this facility.</strong></tip-tip><tip-arrow></tip-arrow></tip></tooltip></td></tr>
+
+
+
+
+                        <tr> <td class="boldchar">Regional Office:</td><td><b class="ng-binding">OAKLAND ASC</b></td> </tr>
+
+
+
+
+                        <tr> <td class="boldchar">Address:</td><td class="ng-binding">1515 CLAY STREET, STE. 310</td><td></td><td></td> </tr>
+                        <tr> <td></td><td class="ng-binding">OAKLAND, CA 94612</td> <td></td><td></td></tr>
+                        <tr> <td class="boldchar">Phone:</td><td class="ng-binding">(510) 286-4201</td> <td></td><td></td></tr>
+                        <tr><td>&nbsp;</td><td></td><td></td><td></td></tr>
+                    </tbody></table>
+                </div>
+            </div>
+
+            <div class="container_style_b ng-hide" ng-show="ctrl.FACILITYINFO.FACILITYTYPE == 'HOME CARE'" style="overflow:visible;">
+                <div class="message_in_container">
+                    For more information on specific Home Care Organization visits, citations, inspections, complaints, locations, and reports, please contact the Home Care Services Bureau at HCSB@dss.ca.gov [mailto:HCSB@dss.ca.gov] or (877) 424-5778.
+                </div>
+            </div>
+
+            <a><site-header back="Back" class="ng-isolate-scope"><a class="ng-binding">Back</a></site-header></a>&nbsp;[<a ng-click="SearchNew()" ui-sref="search({groupId: ''})" href="/Search/">New Search</a>]<!-- [<a href="/CareFacilitySearch/home/SelectType">Change Facility Type</a>] -->		<!-- InstanceEndEditable -->
+            <span ng-show="ctrl.FACILITYINFO.FACILITYNUMBER != 'Facility Number Not Found'" class="">[<a ui-sref="email({facnum:015601302,mode:'info'})" href="/Email/info/15601302">Email Facility Info</a>]</span>
+
+            <!--Tabs example https://jsfiddle.net/jccrosby/eRGT8/-->
+            <div class="container_style_b" id="tabs" ng-show="ctrl.FACILITYINFO.FACILITYNUMBER != 'Facility Number Not Found'" style="overflow:visible;">
+                <ul class="ulTab">
+                    <!-- ngRepeat: tab in ctrl.tabs --><li class="liTab ng-binding ng-scope activeTab" ng-repeat="tab in ctrl.tabs" ng-class="{activeTab:ctrl.isActiveTab(tab.url)}" ng-click="ctrl.onClickTab(tab)"> All Visits </li><!-- end ngRepeat: tab in ctrl.tabs --><li class="liTab ng-binding ng-scope" ng-repeat="tab in ctrl.tabs" ng-class="{activeTab:ctrl.isActiveTab(tab.url)}" ng-click="ctrl.onClickTab(tab)"> Citations </li><!-- end ngRepeat: tab in ctrl.tabs --><li class="liTab ng-binding ng-scope" ng-repeat="tab in ctrl.tabs" ng-class="{activeTab:ctrl.isActiveTab(tab.url)}" ng-click="ctrl.onClickTab(tab)"> Inspections </li><!-- end ngRepeat: tab in ctrl.tabs --><li class="liTab ng-binding ng-scope" ng-repeat="tab in ctrl.tabs" ng-class="{activeTab:ctrl.isActiveTab(tab.url)}" ng-click="ctrl.onClickTab(tab)"> Complaints </li><!-- end ngRepeat: tab in ctrl.tabs --><li class="liTab ng-binding ng-scope" ng-repeat="tab in ctrl.tabs" ng-class="{activeTab:ctrl.isActiveTab(tab.url)}" ng-click="ctrl.onClickTab(tab)"> Other Visits </li><!-- end ngRepeat: tab in ctrl.tabs --><li class="liTab ng-binding ng-scope" ng-repeat="tab in ctrl.tabs" ng-class="{activeTab:ctrl.isActiveTab(tab.url)}" ng-click="ctrl.onClickTab(tab)"> View Location </li><!-- end ngRepeat: tab in ctrl.tabs --><li class="liTab ng-binding ng-scope" ng-repeat="tab in ctrl.tabs" ng-class="{activeTab:ctrl.isActiveTab(tab.url)}" ng-click="ctrl.onClickTab(tab)"> Reports </li><!-- end ngRepeat: tab in ctrl.tabs -->
+                </ul>
+                <div id="mainViewTab">
+                    <!-- ngInclude: ctrl.currentTab --><div ng-include="ctrl.currentTab" class="ng-scope">
+                <div id="allvisits" class="ng-scope">
+                    <p>
+                        </p><table role="presentation">
+                            <tbody><tr>
+                                <td width="200px">#&nbsp;of&nbsp;Visits: </td>
+                                <td class="ng-binding">11</td>                                
+                            </tr>
+                            <tr>
+                                <td>All&nbsp;Visit&nbsp;Dates:</td>
+                                <td>
+                                    <!-- ngRepeat: x in ctrl.lstVisitInfo --><span ng-repeat="x in ctrl.lstVisitInfo" class="ng-scope" style="">
+                                        <!-- ngIf: x.ReportPage.inx < 0 --><!-- ngIf: $last==false && x.ReportPage.inx < 0 -->
+                                        <!-- ngIf: x.ReportPage.inx >= 0 --><span ng-if="x.ReportPage.inx &gt;= 0" class="ng-scope">
+                                            <a ng-href="https://www.ccld.dss.ca.gov/transparencyapi/api/FacilityReports?facNum=015601302&amp;inx=5" ng-attr-target="{{ctrl.target}}" href="https://www.ccld.dss.ca.gov/transparencyapi/api/FacilityReports?facNum=015601302&amp;inx=5" target="_blank">
+                                                <font style="color:blue" class="ng-binding">05/22/2025</font></a></span><!-- end ngIf: x.ReportPage.inx >= 0 --><!-- ngIf: $last==false && x.ReportPage.inx >= 0 --><span ng-if="$last==false &amp;&amp; x.ReportPage.inx &gt;= 0" class="ng-scope">,</span><!-- end ngIf: $last==false && x.ReportPage.inx >= 0 -->                                        
+                                    </span><!-- end ngRepeat: x in ctrl.lstVisitInfo --><span ng-repeat="x in ctrl.lstVisitInfo" class="ng-scope">
+                                        <!-- ngIf: x.ReportPage.inx < 0 --><!-- ngIf: $last==false && x.ReportPage.inx < 0 -->
+                                        <!-- ngIf: x.ReportPage.inx >= 0 --><span ng-if="x.ReportPage.inx &gt;= 0" class="ng-scope">
+                                            <a ng-href="https://www.ccld.dss.ca.gov/transparencyapi/api/FacilityReports?facNum=015601302&amp;inx=4" ng-attr-target="{{ctrl.target}}" href="https://www.ccld.dss.ca.gov/transparencyapi/api/FacilityReports?facNum=015601302&amp;inx=4" target="_blank">
+                                                <font style="color:blue" class="ng-binding">04/16/2025</font></a></span><!-- end ngIf: x.ReportPage.inx >= 0 --><!-- ngIf: $last==false && x.ReportPage.inx >= 0 --><span ng-if="$last==false &amp;&amp; x.ReportPage.inx &gt;= 0" class="ng-scope">,</span><!-- end ngIf: $last==false && x.ReportPage.inx >= 0 -->                                        
+                                    </span><!-- end ngRepeat: x in ctrl.lstVisitInfo --><span ng-repeat="x in ctrl.lstVisitInfo" class="ng-scope">
+                                        <!-- ngIf: x.ReportPage.inx < 0 --><!-- ngIf: $last==false && x.ReportPage.inx < 0 -->
+                                        <!-- ngIf: x.ReportPage.inx >= 0 --><span ng-if="x.ReportPage.inx &gt;= 0" class="ng-scope">
+                                            <a ng-href="https://www.ccld.dss.ca.gov/transparencyapi/api/FacilityReports?facNum=015601302&amp;inx=11" ng-attr-target="{{ctrl.target}}" href="https://www.ccld.dss.ca.gov/transparencyapi/api/FacilityReports?facNum=015601302&amp;inx=11" target="_blank">
+                                                <font style="color:blue" class="ng-binding">03/19/2025</font></a></span><!-- end ngIf: x.ReportPage.inx >= 0 --><!-- ngIf: $last==false && x.ReportPage.inx >= 0 --><span ng-if="$last==false &amp;&amp; x.ReportPage.inx &gt;= 0" class="ng-scope">,</span><!-- end ngIf: $last==false && x.ReportPage.inx >= 0 -->                                        
+                                    </span><!-- end ngRepeat: x in ctrl.lstVisitInfo --><span ng-repeat="x in ctrl.lstVisitInfo" class="ng-scope">
+                                        <!-- ngIf: x.ReportPage.inx < 0 --><!-- ngIf: $last==false && x.ReportPage.inx < 0 -->
+                                        <!-- ngIf: x.ReportPage.inx >= 0 --><span ng-if="x.ReportPage.inx &gt;= 0" class="ng-scope">
+                                            <a ng-href="https://www.ccld.dss.ca.gov/transparencyapi/api/FacilityReports?facNum=015601302&amp;inx=3" ng-attr-target="{{ctrl.target}}" href="https://www.ccld.dss.ca.gov/transparencyapi/api/FacilityReports?facNum=015601302&amp;inx=3" target="_blank">
+                                                <font style="color:blue" class="ng-binding">03/07/2025</font></a></span><!-- end ngIf: x.ReportPage.inx >= 0 --><!-- ngIf: $last==false && x.ReportPage.inx >= 0 --><span ng-if="$last==false &amp;&amp; x.ReportPage.inx &gt;= 0" class="ng-scope">,</span><!-- end ngIf: $last==false && x.ReportPage.inx >= 0 -->                                        
+                                    </span><!-- end ngRepeat: x in ctrl.lstVisitInfo --><span ng-repeat="x in ctrl.lstVisitInfo" class="ng-scope">
+                                        <!-- ngIf: x.ReportPage.inx < 0 --><!-- ngIf: $last==false && x.ReportPage.inx < 0 -->
+                                        <!-- ngIf: x.ReportPage.inx >= 0 --><span ng-if="x.ReportPage.inx &gt;= 0" class="ng-scope">
+                                            <a ng-href="https://www.ccld.dss.ca.gov/transparencyapi/api/FacilityReports?facNum=015601302&amp;inx=10" ng-attr-target="{{ctrl.target}}" href="https://www.ccld.dss.ca.gov/transparencyapi/api/FacilityReports?facNum=015601302&amp;inx=10" target="_blank">
+                                                <font style="color:blue" class="ng-binding">12/05/2024</font></a></span><!-- end ngIf: x.ReportPage.inx >= 0 --><!-- ngIf: $last==false && x.ReportPage.inx >= 0 --><span ng-if="$last==false &amp;&amp; x.ReportPage.inx &gt;= 0" class="ng-scope">,</span><!-- end ngIf: $last==false && x.ReportPage.inx >= 0 -->                                        
+                                    </span><!-- end ngRepeat: x in ctrl.lstVisitInfo --><span ng-repeat="x in ctrl.lstVisitInfo" class="ng-scope">
+                                        <!-- ngIf: x.ReportPage.inx < 0 --><!-- ngIf: $last==false && x.ReportPage.inx < 0 -->
+                                        <!-- ngIf: x.ReportPage.inx >= 0 --><span ng-if="x.ReportPage.inx &gt;= 0" class="ng-scope">
+                                            <a ng-href="https://www.ccld.dss.ca.gov/transparencyapi/api/FacilityReports?facNum=015601302&amp;inx=9" ng-attr-target="{{ctrl.target}}" href="https://www.ccld.dss.ca.gov/transparencyapi/api/FacilityReports?facNum=015601302&amp;inx=9" target="_blank">
+                                                <font style="color:blue" class="ng-binding">05/29/2024</font></a></span><!-- end ngIf: x.ReportPage.inx >= 0 --><!-- ngIf: $last==false && x.ReportPage.inx >= 0 --><span ng-if="$last==false &amp;&amp; x.ReportPage.inx &gt;= 0" class="ng-scope">,</span><!-- end ngIf: $last==false && x.ReportPage.inx >= 0 -->                                        
+                                    </span><!-- end ngRepeat: x in ctrl.lstVisitInfo --><span ng-repeat="x in ctrl.lstVisitInfo" class="ng-scope">
+                                        <!-- ngIf: x.ReportPage.inx < 0 --><!-- ngIf: $last==false && x.ReportPage.inx < 0 -->
+                                        <!-- ngIf: x.ReportPage.inx >= 0 --><span ng-if="x.ReportPage.inx &gt;= 0" class="ng-scope">
+                                            <a ng-href="https://www.ccld.dss.ca.gov/transparencyapi/api/FacilityReports?facNum=015601302&amp;inx=1" ng-attr-target="{{ctrl.target}}" href="https://www.ccld.dss.ca.gov/transparencyapi/api/FacilityReports?facNum=015601302&amp;inx=1" target="_blank">
+                                                <font style="color:blue" class="ng-binding">08/29/2023</font></a></span><!-- end ngIf: x.ReportPage.inx >= 0 --><!-- ngIf: $last==false && x.ReportPage.inx >= 0 --><span ng-if="$last==false &amp;&amp; x.ReportPage.inx &gt;= 0" class="ng-scope">,</span><!-- end ngIf: $last==false && x.ReportPage.inx >= 0 -->                                        
+                                    </span><!-- end ngRepeat: x in ctrl.lstVisitInfo --><span ng-repeat="x in ctrl.lstVisitInfo" class="ng-scope">
+                                        <!-- ngIf: x.ReportPage.inx < 0 --><!-- ngIf: $last==false && x.ReportPage.inx < 0 -->
+                                        <!-- ngIf: x.ReportPage.inx >= 0 --><span ng-if="x.ReportPage.inx &gt;= 0" class="ng-scope">
+                                            <a ng-href="https://www.ccld.dss.ca.gov/transparencyapi/api/FacilityReports?facNum=015601302&amp;inx=0" ng-attr-target="{{ctrl.target}}" href="https://www.ccld.dss.ca.gov/transparencyapi/api/FacilityReports?facNum=015601302&amp;inx=0" target="_blank">
+                                                <font style="color:blue" class="ng-binding">06/28/2023</font></a></span><!-- end ngIf: x.ReportPage.inx >= 0 --><!-- ngIf: $last==false && x.ReportPage.inx >= 0 --><span ng-if="$last==false &amp;&amp; x.ReportPage.inx &gt;= 0" class="ng-scope">,</span><!-- end ngIf: $last==false && x.ReportPage.inx >= 0 -->                                        
+                                    </span><!-- end ngRepeat: x in ctrl.lstVisitInfo --><span ng-repeat="x in ctrl.lstVisitInfo" class="ng-scope">
+                                        <!-- ngIf: x.ReportPage.inx < 0 --><!-- ngIf: $last==false && x.ReportPage.inx < 0 -->
+                                        <!-- ngIf: x.ReportPage.inx >= 0 --><span ng-if="x.ReportPage.inx &gt;= 0" class="ng-scope">
+                                            <a ng-href="https://www.ccld.dss.ca.gov/transparencyapi/api/FacilityReports?facNum=015601302&amp;inx=8" ng-attr-target="{{ctrl.target}}" href="https://www.ccld.dss.ca.gov/transparencyapi/api/FacilityReports?facNum=015601302&amp;inx=8" target="_blank">
+                                                <font style="color:blue" class="ng-binding">04/14/2023</font></a></span><!-- end ngIf: x.ReportPage.inx >= 0 --><!-- ngIf: $last==false && x.ReportPage.inx >= 0 --><span ng-if="$last==false &amp;&amp; x.ReportPage.inx &gt;= 0" class="ng-scope">,</span><!-- end ngIf: $last==false && x.ReportPage.inx >= 0 -->                                        
+                                    </span><!-- end ngRepeat: x in ctrl.lstVisitInfo --><span ng-repeat="x in ctrl.lstVisitInfo" class="ng-scope">
+                                        <!-- ngIf: x.ReportPage.inx < 0 --><!-- ngIf: $last==false && x.ReportPage.inx < 0 -->
+                                        <!-- ngIf: x.ReportPage.inx >= 0 --><span ng-if="x.ReportPage.inx &gt;= 0" class="ng-scope">
+                                            <a ng-href="https://www.ccld.dss.ca.gov/transparencyapi/api/FacilityReports?facNum=015601302&amp;inx=7" ng-attr-target="{{ctrl.target}}" href="https://www.ccld.dss.ca.gov/transparencyapi/api/FacilityReports?facNum=015601302&amp;inx=7" target="_blank">
+                                                <font style="color:blue" class="ng-binding">05/23/2022</font></a></span><!-- end ngIf: x.ReportPage.inx >= 0 --><!-- ngIf: $last==false && x.ReportPage.inx >= 0 --><span ng-if="$last==false &amp;&amp; x.ReportPage.inx &gt;= 0" class="ng-scope">,</span><!-- end ngIf: $last==false && x.ReportPage.inx >= 0 -->                                        
+                                    </span><!-- end ngRepeat: x in ctrl.lstVisitInfo --><span ng-repeat="x in ctrl.lstVisitInfo" class="ng-scope">
+                                        <!-- ngIf: x.ReportPage.inx < 0 --><!-- ngIf: $last==false && x.ReportPage.inx < 0 -->
+                                        <!-- ngIf: x.ReportPage.inx >= 0 --><span ng-if="x.ReportPage.inx &gt;= 0" class="ng-scope">
+                                            <a ng-href="https://www.ccld.dss.ca.gov/transparencyapi/api/FacilityReports?facNum=015601302&amp;inx=6" ng-attr-target="{{ctrl.target}}" href="https://www.ccld.dss.ca.gov/transparencyapi/api/FacilityReports?facNum=015601302&amp;inx=6" target="_blank">
+                                                <font style="color:blue" class="ng-binding">06/30/2021</font></a></span><!-- end ngIf: x.ReportPage.inx >= 0 --><!-- ngIf: $last==false && x.ReportPage.inx >= 0 -->                                        
+                                    </span><!-- end ngRepeat: x in ctrl.lstVisitInfo -->
+                                </td>
+                            </tr>
+                            <tr><td>&nbsp;</td><td> </td></tr>
+                            <tr><td colspan="2">All visits include Inspection Visits, other visits and may include complaint visits.</td></tr>
+
+                        </tbody></table>
+                    <p></p>
+                </div>
+            </div>
+                </div>
+            </div>
+
+            <!--ul style="font-size:small; font-family:Arial; font-weight:bold;">
+                <li><a href="#tabs-1">All Visits</a></li>
+                <li><a href="#tabs-2">Citations</a></li>
+                <li><a href="#tabs-3">Inspections</a></li>d
+                <li><a href="#tabs-4">Complaints</a></li>
+                <li><a href="#tabs-5">Other Visits</a></li>
+                <li><a href='#tabs-6'>View Location</a></li>
+                <li><a href="#tabs-9">Reports</a></li>
+            </ul-->
+            <script type="text/ng-template" id="all_visits.tpl.html">
+                <div id="allvisits">
+                    <p>
+                        <table role="presentation">
+                            <tr>
+                                <td width="200px">#&nbsp;of&nbsp;Visits: </td>
+                                <td>{{ctrl.AllVisits}}</td>                                
+                            </tr>
+                            <tr>
+                                <td>All&nbsp;Visit&nbsp;Dates:</td>
+                                <td>
+                                    <span ng-repeat="x in ctrl.lstVisitInfo">
+                                        <span ng-if="x.ReportPage.inx < 0">{{x.ReportDate}}</span><span ng-if="$last==false && x.ReportPage.inx < 0">,</span>
+                                        <span ng-if="x.ReportPage.inx >= 0">
+                                            <a ng-href="{{ctrl.GetReportViaApi(x.ReportPage.facNum, x.ReportPage.inx)}}" ng-attr-target="{{ctrl.target}}">
+                                                <font style="color:blue">{{x.ReportDate}}</font></a></span><span ng-if="$last==false && x.ReportPage.inx >= 0">,</span>                                        
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr><td>&nbsp;</td><td> </td></tr>
+                            <tr><td colspan="2">All visits include Inspection Visits, other visits and may include complaint visits.</td></tr>
+
+                        </table>
+                    </p>
+                </div>
+            </script>
+            <script type="text/ng-template" id="citations.tpl.html">
+                <div id="citations">
+                    <p>
+                        <table role="presentation">
+                            <tr><td width="200px">Type A Citation: <img class="typea" src="images/q_mark-1.gif" alt="Question Mark" tooltips tooltip-size="medium" tooltip-side="bottom" tooltip-template-url="tooltips/typea_citation.html" /> </td><td>{{ctrl.TotaltypeA}}</td></tr>
+                            <tr><td>Type B Citation: <img class="typeb" src="images/q_mark-1.gif" alt="Question Mark" tooltips tooltip-size="medium" tooltip-side="bottom" tooltip-template-url="tooltips/typeb_citation.html"/> </td><td>{{ctrl.TotaltypeB}}</td></tr>
+                            <tr><td colspan="2"><br />One or more citations may be under appeal and/or may have been corrected. Contact the State Licensing Office for more information.  </td></tr>
+                        </table>
+                    </p>
+                </div>
+            </script>
+            <script type="text/ng-template" id="inspections.tpl.html">
+                <div id="inspections">
+                    <p>
+                        <table role="presentation">
+                            <tr><td width="200px"># of Inspections: </td><td>{{ctrl.FACILITYINFO.NBRINSPVISITS}}</td></tr>
+                            <tr><td>All Inspection Dates:</td>
+                                <td>
+                                    <span ng-repeat="d in ctrl.InspectionDates">
+                                        <span ng-if="d.ReportPage.inx >= 0"><a ng-href="{{ctrl.GetReportViaApi(d.ReportPage.facNum, d.ReportPage.inx)}}" ng-attr-target="{{ctrl.target}}"><font style="color:blue">{{d.ReportDate}}</font></a></span><span ng-if="$last==false && d.ReportPage.inx >= 0">,</span>
+                                        <span ng-if="d.ReportPage.inx < 0">{{d.ReportDate}}</span><span ng-if="$last==false && d.ReportPage.inx < 0">,</span>
+                                    </span>
+                                    <span ng-if="ctrl.InspectionDates.length == 0">No Inspection Visit Information</span>
+                                </td>
+                            </tr>
+                            <tr><td>&nbsp;&nbsp;&nbsp;- Type A Citation: <img class="typea" src="images/q_mark-1.gif" alt="Question Mark" tooltips tooltip-size="medium" tooltip-side="bottom" tooltip-template-url="tooltips/typea_citation.html"/> </td><td>{{ctrl.FACILITYINFO.NBRINSPTYPA}}</td></tr>
+                            <tr><td>&nbsp;&nbsp;&nbsp;- Type B Citation: <img class="typeb" src="images/q_mark-1.gif" alt="Question Mark" tooltips tooltip-size="medium" tooltip-side="bottom" tooltip-template-url="tooltips/typeb_citation.html"/> </td><td>{{ctrl.FACILITYINFO.NBRINSPTYPB}}</td></tr>
+                            <tr><td colspan="2"><br />One or more citations may be under appeal and/or may have been corrected. Contact the State Licensing Office for more information.  </td></tr>
+                        </table>
+                    </p>
+                </div>
+            </script>
+            <script type="text/ng-template" id="complaints.tpl.html">
+                <div id="complaints">
+                    <p>
+                    <table role="presentation">
+                        <tr><td>Total Complaint Investigations Completed:&nbsp;&nbsp;&nbsp;&nbsp;</td><td>{{ctrl.FACILITYINFO.CMPCOUNT}}</td></tr>
+                        <tr><td>&nbsp;-Total Allegations Substantiated: </td><td>{{ctrl.FACILITYINFO.TOTSUBALG}}</td></tr>
+                        <tr ng-if="ctrl.FACILITYINFO.TOTINCALG != '-1'"><td>&nbsp;-Total Allegations Inconclusive: <img class="typeb" src="images/q_mark-1.gif" alt="Inconclusive help" tooltips tooltip-size="medium" tooltip-side="left" tooltip-template-url="tooltips/Allegations_Inconclusive.html" /> </td><td>{{ctrl.FACILITYINFO.TOTINCALG}} </td></tr>
+                        <tr ng-if="ctrl.FACILITYINFO.TOTUNSALG != '-1'"><td>&nbsp;-Total Allegations Unsubstantiated: <img class="typeb" src="images/q_mark-1.gif" alt="Unsubstantiated help" tooltips tooltip-size="medium" tooltip-side="left" tooltip-template-url="tooltips/Allegations_Unsubstantiated.html" /></td><td>{{ctrl.FACILITYINFO.TOTUNSALG}}</td></tr>
+
+                        <tr ng-if="ctrl.isRCFE"><td>&nbsp;-Total Allegations Unfounded:</td><td>{{ctrl.FACILITYINFO.TOTUNFALG}}</td></tr>
+
+                        <tr><td>Total Type A Citations: <img class="typea" src="images/q_mark-1.gif" alt="Question Mark" tooltips tooltip-size="medium" tooltip-side="bottom" tooltip-template-url="tooltips/typea_citation.html" /> </td><td>{{ctrl.FACILITYINFO.TOTTYPEA}}</td></tr>
+                        <tr><td>Total Type B Citations: <img class="typeb" src="images/q_mark-1.gif" alt="Question Mark" tooltips tooltip-size="medium" tooltip-side="bottom" tooltip-template-url="tooltips/typeb_citation.html"/> </td><td>{{ctrl.FACILITYINFO.TOTTYPEB}}</td></tr>
+                        <tr><td>&nbsp;&nbsp;&nbsp;- Total Complaint Visits: </td><td>{{ctrl.FACILITYINFO.TOTCMPVISITS}}</td></tr>
+                        <tr><td colspan="2"><br /><br /></td></tr>
+                    </table>
+
+                    <table role="presentation">
+                        <tr><td colspan="2"><strong>Complaint Details:</strong><br /><br /></td></tr>
+                        <tbody ng-repeat="c in ctrl.ComplaintDates">
+                            <tr><td class="no_wrap">Complaint Investigation Completed:&nbsp;&nbsp;&nbsp;&nbsp;</td><td>{{c.Complaint.APPROVEDATE}}</td></tr>
+                            <tr><td>&nbsp;-# Allegations Substantiated: </td><td>{{c.Complaint.SUBALLEGATIONS}}</td></tr>
+                            <tr ng-if="c.Complaint.INCALLEGATIONS != '-1'"><td>&nbsp;-# Allegations Inconclusive:<img class="typeb" src="images/q_mark-1.gif" alt="Inconclusive help" tooltips tooltip-size="small" tooltip-side="left" tooltip-template-url="tooltips/Allegations_Inconclusive.html" /></td><td>{{c.Complaint.INCALLEGATIONS}}</td></tr>
+                            <tr ng-if="c.Complaint.UNSALLEGATIONS != '-1'"><td>&nbsp;-# Allegations Unsubstantiated:<img class="typeb" src="images/q_mark-1.gif" alt="Unsubstantiated help" tooltips tooltip-size="small" tooltip-side="left" tooltip-template-url="tooltips/Allegations_Unsubstantiated.html" /></td><td>{{c.Complaint.UNSALLEGATIONS}}</td></tr>
+
+                            <tr ng-if="ctrl.isRCFE"><td>&nbsp;-# Allegations Unfounded:</td><td>{{c.Complaint.UNFALLEGATIONS}}</td></tr>
+
+                            <tr><td>Type A Citations:<img class="typea" src="images/q_mark-1.gif" alt="Question Mark" tooltips tooltip-size="medium" tooltip-side="bottom" tooltip-template-url="tooltips/typea_citation.html"/> </td><td>{{c.Complaint.CITTYPEA}}</td></tr>
+                            <tr><td>Type B Citations:<img class="typeb" src="images/q_mark-1.gif" alt="Question Mark" tooltips tooltip-size="medium" tooltip-side="bottom" tooltip-template-url="tooltips/typeb_citation.html"/> </td><td>{{c.Complaint.CITTYPEB}}</td></tr>
+                            <tr>
+                                <td># of Visits: </td>
+                                <td>{{c.Complaint.NUMCMPVISITS}}</td>
+                            <tr>
+                                <td>Dates of Visits: </td>
+                                <td>
+                                    <span ng-repeat="dt in c.ReportInfo">
+                                        <span ng-if="dt.ReportPage.inx < 0">{{dt.ReportDate}}</span><span ng-if="$last==false && dt.ReportPage.inx < 0">,</span>
+                                        <span ng-if="dt.ReportPage.inx >= 0"><a ng-href="{{ctrl.GetReportViaApi(dt.ReportPage.facNum, dt.ReportPage.inx)}}" ng-attr-target="{{ctrl.target}}">{{dt.ReportDate}}</a></span><span ng-if="$last==false && dt.ReportPage.inx >= 0">,</span>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">&nbsp;</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table role="presentation">
+                        <tr><td colspan="2"><br />One or more citations may be under appeal and/or may have been corrected. Contact the State Licensing Office for more information.  </td></tr>
+                    </table>
+                    </p>
+                </div>
+            </script>
+            <script type="text/ng-template" id="other_visits.tpl.html">
+                <div id="tabs-5">
+                    <p>
+                        <table role="presentation">
+                            <tr><td width="200px"># Other Visits: </td><td>{{ctrl.FACILITYINFO.NBROTHERVISITS}}</td></tr>
+
+                            <tr><td>Other Visit Dates:</td>
+                            <td>
+                                <span ng-if="ctrl.OtherVisitDates.length == 0">No Other Visit Information</span>
+                                <span ng-repeat="d in ctrl.OtherVisitDates">
+                                    <span ng-if="d.ReportPage.inx >= 0"><a ng-href="{{ctrl.GetReportViaApi(d.ReportPage.facNum, d.ReportPage.inx)}}" ng-attr-target="{{ctrl.target}}"><font style="color:blue">{{d.ReportDate}}</font></a></span><span ng-if="$last==false && d.ReportPage.inx >= 0">,</span>
+                                    <span ng-if="d.ReportPage.inx < 0">{{d.ReportDate}}</span><span ng-if="$last==false && d.ReportPage.inx < 0">,</span>
+                                </span>
+                            </td>
+                            <!--td>No Other Visit Information</td--></tr>
+
+                            <tr><td>&nbsp;&nbsp;&nbsp;- Type A Citation: <img class="typea" src="images/q_mark-1.gif" alt="Question Mark" tooltips tooltip-size="medium" tooltip-side="bottom" tooltip-template-url="tooltips/typea_citation.html"/> </td><td>{{ctrl.FACILITYINFO.NBROTHERTYPA}}</td></tr>
+                            <tr><td>&nbsp;&nbsp;&nbsp;- Type B Citation: <img class="typeb" src="images/q_mark-1.gif" alt="Question Mark" tooltips tooltip-size="medium" tooltip-side="bottom" tooltip-template-url="tooltips/typeb_citation.html"/> </td><td>{{ctrl.FACILITYINFO.NBROTHERTYPB}}</td></tr>
+                            <tr><td colspan="2"><br />One or more citations may be under appeal. Contact the State Licensing Office for more information.  </td></tr>
+
+                            <tr><td></td></tr>
+                            <tr>
+                                <td colspan=2>
+                                    <br />Other visits include anything other than yearly inspections and complaints,
+                                    where the state may visit for administrative or follow up purposes, such as pre/post licensing processes.
+                                </td>
+                            </tr>
+                        </table>
+                    </p>
+                </div>
+            </script>
+            <script type="text/ng-template" id="location.tpl.html">
+                <!-- Tabs display: see note above. -->
+                <!-- change value to something other than deadvalue.-->
+                <div id='location'>                    
+                    <p><a ng-href="{{ctrl.GoogleMapURL}}" ng-attr-target="{{ctrl.target}}">
+                        <span class="fa fa-map"></span></a></p>
+                    Clicking the map will open maps.google.com in a new window.
+                    You will become subject to the maps.google.com's privacy policy and practices.
+                    To learn about the their policy and practices, refer to the privacy policy statement posted on the maps.google.com site.
+                </div>
+            </script>
+
+            <script type="text/ng-template" id="reports.tpl.html">
+                <div id="reports">
+                    <p>
+                        <table role="presentation">
+                            <tr><td width="125px"><strong>Total Reports: </strong></td><td><strong>{{ctrl.REPORTLIST.COUNT}}</strong></td></tr>
+                            <tr><td><br /><br /></td></tr>
+                            <tr><td width="125px"><strong>Date</strong></td><td><strong>Title</strong></td></tr>
+                        </table>
+                        <br />
+                        <table role="presentation"
+                               >
+                            <tr ng_repeat="r in ctrl.REPORTLIST.REPORTARRAY">
+                                <td width="125px">{{r.REPORTDATE}}</td>
+                                <td><a ng-href="{{ctrl.GetReportViaApi(ctrl.FACILITYINFO.FACILITYNUMBER, $index)}}"  ng-attr-target="{{ctrl.target}}"><font style="color:blue">{{r.REPORTTITLE}}</font></a></td>
+                            </tr>
+                        </table>
+                    </p>
+                </div>
+            </script>
+
+            <script type="text/ng-template" id="facility_comment.tpl.html">
+    
+                <div id='facilitycomment'>
+                    <p style="margin-top: 1em;">{{ctrl.FACILITYINFO.COMMENTS}}</p>
+                </div>
+            </script>
+
+            <a><site-header back="Back" class="ng-isolate-scope"><a class="ng-binding">Back</a></site-header></a>&nbsp;[<a ng-click="SearchNew()" ui-sref="search({groupId: ''})" href="/Search/">New Search</a>]<!-- [<a href="/CareFacilitySearch/home/SelectType">Change Facility Type</a>] -->		<!-- InstanceEndEditable -->
+            <span ng-show="ctrl.FACILITYINFO.FACILITYNUMBER != 'Facility Number Not Found'" class="">[<a ui-sref="email({facnum:015601302,mode:'info'})" href="/Email/info/15601302">Email Facility Info</a>]</span>
+        </div>
+
+        <!-- InstanceEndEditable -->
+    </div>
+    <!-- ui-view-anchor --><div ui-view="right" autoscroll="false"><div class="content_right_column clearfix ng-scope">
+    <!-- InstanceBeginEditable name="ContentRightColumn" -->
+
+
+
+
+
+    <style>
+        #accordion {
+            list-style: none;
+            padding: 0 0 0 0;
+            width: 95%;
+        }
+
+            #accordion div {
+                display: block;
+                font-weight: bold;
+                margin: 5px 5px;
+                cursor: pointer;
+                padding: 2px 2px 2px 2px;
+                list-style: circle;
+            }
+
+            #accordion ul {
+                list-style: none;
+                padding: 0 0 0 0;
+            }
+
+            #accordion ul {
+                /*display: none;*/
+            }
+
+                #accordion ul li {
+                    font-weight: normal;
+                    cursor: auto;
+                    background-color: #fff;
+                    padding: 0 0 0 2px;
+                }
+
+            #accordion a {
+                text-decoration: none;
+            }
+
+        /* #accordion a:hover {    text-decoration: underline;} */
+
+        /* Resource Corner Links */
+
+        .transparency-accordion {
+            list-style: none;
+            padding: 0 0 0 0;
+            width: 95%;
+        }
+
+            .transparency-accordion div {
+                display: block;
+                font-weight: bold;
+                margin: 5px 5px;
+                cursor: pointer;
+                padding: 2px 2px 2px 2px;
+                list-style: circle;
+            }
+
+            .transparency-accordion ul {
+/*                list-style: none;
+*/                padding: 0 0 0 0;
+            }
+
+            .transparency-accordion ul {
+                /*display: none;*/
+            }
+
+                .transparency-accordion ul li {
+                    font-weight: normal;
+                    cursor: auto;
+                    background-color: #fff;
+                    padding: 0 0 0 2px;
+                }
+
+            .transparency-accordion a {
+                text-decoration: none;
+            }
+
+            .transparency-accordion b {
+                margin-top: 1em;
+            }
+
+            .transparency-accordion p {
+                margin-top: 1em;
+                font-weight: normal;
+            }
+
+    </style>
+
+
+    <!-- ngIf: showBanner -->
+
+    <!-- code sections below are a central instructon file rendered from the page title -->
+    <div ng-show="showFAQ" class="container_style_d">
+        <h5 style="color:White" class="ng-binding">Facility Detail FAQ</h5>
+        <div class="add_side_padding">
+
+            <!-- ui-view-anchor --><div ui-view="MyAccordianView" autoscroll="false"><!--http://jsfiddle.net/3sVz8/19/-->
+<div ng-controller="faqController as faqCtrl" class="ng-scope">
+    <ul id="accordion">
+        <!-- ngRepeat: item in faqCtrl.json track by $index --><!-- ngIf: faqCtrl.json.length !== undefined --><li ng-if="faqCtrl.json.length !== undefined" ng-repeat="item in faqCtrl.json track by $index" class="ng-scope" style="">
+            <div slide-toggle="#derp0" class="ng-binding"><img src="images/template2013/bullet_blue_disc.png" alt="Blue Disk"> I have questions about this facility. Where can I get the answers?</div>
+            <div id="derp0" class="slideable" style="overflow: hidden; height: 0px; transition-property: height; transition-duration: 250ms; transition-timing-function: ease-in-out;"><div class="slideable_content" style="margin:0 !important; padding:0 !important"><ul><li ng-bind-html="item.answer" class="ng-binding">Please call us. The State Licensing Regional Office listed below the facility address has more information including details of violations and when they occurred.</li></ul></div></div>
+        </li><!-- end ngIf: faqCtrl.json.length !== undefined --><!-- end ngRepeat: item in faqCtrl.json track by $index --><!-- ngIf: faqCtrl.json.length !== undefined --><li ng-if="faqCtrl.json.length !== undefined" ng-repeat="item in faqCtrl.json track by $index" class="ng-scope">
+            <div slide-toggle="#derp1" class="ng-binding"><img src="images/template2013/bullet_blue_disc.png" alt="Blue Disk"> Where can I find out more about how facilities are regulated in California?</div>
+            <div id="derp1" class="slideable" style="overflow: hidden; height: 0px; transition-property: height; transition-duration: 250ms; transition-timing-function: ease-in-out;"><div class="slideable_content" style="margin:0 !important; padding:0 !important"><ul><li ng-bind-html="item.answer" class="ng-binding"> Please visit the <a href="https://cdss.ca.gov/inforesources/community-care-licensing/" target="_blank"> Community Care Licensing</a> website. </li></ul></div></div>
+        </li><!-- end ngIf: faqCtrl.json.length !== undefined --><!-- end ngRepeat: item in faqCtrl.json track by $index --><!-- ngIf: faqCtrl.json.length !== undefined --><li ng-if="faqCtrl.json.length !== undefined" ng-repeat="item in faqCtrl.json track by $index" class="ng-scope">
+            <div slide-toggle="#derp2" class="ng-binding"><img src="images/template2013/bullet_blue_disc.png" alt="Blue Disk"> Why does it show "No date on file" for a license date?</div>
+            <div id="derp2" class="slideable" style="overflow: hidden; height: 0px; transition-property: height; transition-duration: 250ms; transition-timing-function: ease-in-out;"><div class="slideable_content" style="margin:0 !important; padding:0 !important"><ul><li ng-bind-html="item.answer" class="ng-binding">The department will be adding additional information in future weeks. In some circumstances, the exact first license date may not be available. Please call the State Licensing Office for more information.</li></ul></div></div>
+        </li><!-- end ngIf: faqCtrl.json.length !== undefined --><!-- end ngRepeat: item in faqCtrl.json track by $index --><!-- ngIf: faqCtrl.json.length !== undefined --><li ng-if="faqCtrl.json.length !== undefined" ng-repeat="item in faqCtrl.json track by $index" class="ng-scope">
+            <div slide-toggle="#derp3" class="ng-binding"><img src="images/template2013/bullet_blue_disc.png" alt="Blue Disk"> What does "Pending" status mean?</div>
+            <div id="derp3" class="slideable" style="overflow: hidden; height: 0px; transition-property: height; transition-duration: 250ms; transition-timing-function: ease-in-out;"><div class="slideable_content" style="margin:0 !important; padding:0 !important"><ul><li ng-bind-html="item.answer" class="ng-binding">The State is processing an application for licensure, but the facility is not yet licensed.</li></ul></div></div>
+        </li><!-- end ngIf: faqCtrl.json.length !== undefined --><!-- end ngRepeat: item in faqCtrl.json track by $index --><!-- ngIf: faqCtrl.json.length !== undefined --><li ng-if="faqCtrl.json.length !== undefined" ng-repeat="item in faqCtrl.json track by $index" class="ng-scope">
+            <div slide-toggle="#derp4" class="ng-binding"><img src="images/template2013/bullet_blue_disc.png" alt="Blue Disk"> What does a “Revocation Action Pending” mean?</div>
+            <div id="derp4" class="slideable" style="overflow: hidden; height: 0px; transition-property: height; transition-duration: 250ms; transition-timing-function: ease-in-out;"><div class="slideable_content" style="margin:0 !important; padding:0 !important"><ul><li ng-bind-html="item.answer" class="ng-binding">The State has filed a legal action to revoke the facility's license. This action may be appealed and may result in a revocation, probation, or it may be dismissed by a judge. The facility may remain open during this process.</li></ul></div></div>
+        </li><!-- end ngIf: faqCtrl.json.length !== undefined --><!-- end ngRepeat: item in faqCtrl.json track by $index --><!-- ngIf: faqCtrl.json.length !== undefined --><li ng-if="faqCtrl.json.length !== undefined" ng-repeat="item in faqCtrl.json track by $index" class="ng-scope">
+            <div slide-toggle="#derp5" class="ng-binding"><img src="images/template2013/bullet_blue_disc.png" alt="Blue Disk"> What does “License Suspended” mean under License Status?</div>
+            <div id="derp5" class="slideable" style="overflow: hidden; height: 0px; transition-property: height; transition-duration: 250ms; transition-timing-function: ease-in-out;"><div class="slideable_content" style="margin:0 !important; padding:0 !important"><ul><li ng-bind-html="item.answer" class="ng-binding">The State has closed the facility due to an imminent risk of harm. This action may be appealed, but the facility will remain closed until a judge makes a final decision.</li></ul></div></div>
+        </li><!-- end ngIf: faqCtrl.json.length !== undefined --><!-- end ngRepeat: item in faqCtrl.json track by $index --><!-- ngIf: faqCtrl.json.length !== undefined --><li ng-if="faqCtrl.json.length !== undefined" ng-repeat="item in faqCtrl.json track by $index" class="ng-scope">
+            <div slide-toggle="#derp6" class="ng-binding"><img src="images/template2013/bullet_blue_disc.png" alt="Blue Disk"> What does "Probation" mean?</div>
+            <div id="derp6" class="slideable" style="overflow: hidden; height: 0px; transition-property: height; transition-duration: 250ms; transition-timing-function: ease-in-out;"><div class="slideable_content" style="margin:0 !important; padding:0 !important"><ul><li ng-bind-html="item.answer" class="ng-binding">Probation is the period of time that a facility is required to comply with specific terms and conditions in order to prevent the revocation of the facility's license. If all the terms and conditions are met, the probation is lifted after the specified date.</li></ul></div></div>
+        </li><!-- end ngIf: faqCtrl.json.length !== undefined --><!-- end ngRepeat: item in faqCtrl.json track by $index --><!-- ngIf: faqCtrl.json.length !== undefined --><li ng-if="faqCtrl.json.length !== undefined" ng-repeat="item in faqCtrl.json track by $index" class="ng-scope">
+            <div slide-toggle="#derp7" class="ng-binding"><img src="images/template2013/bullet_blue_disc.png" alt="Blue Disk"> What is a Type A Citation?</div>
+            <div id="derp7" class="slideable" style="overflow: hidden; height: 0px; transition-property: height; transition-duration: 250ms; transition-timing-function: ease-in-out;"><div class="slideable_content" style="margin:0 !important; padding:0 !important"><ul><li ng-bind-html="item.answer" class="ng-binding">It is for the most serious type of violations in which there is an immediate risk to the health, safety or personal rights of those in care. Examples may include lack of care or supervision, access to open bodies of water, lack of a fire clearance for the building and access to dangerous chemicals. Citations for these violations will always be issued even if the violation is corrected on the spot.</li></ul></div></div>
+        </li><!-- end ngIf: faqCtrl.json.length !== undefined --><!-- end ngRepeat: item in faqCtrl.json track by $index --><!-- ngIf: faqCtrl.json.length !== undefined --><li ng-if="faqCtrl.json.length !== undefined" ng-repeat="item in faqCtrl.json track by $index" class="ng-scope">
+            <div slide-toggle="#derp8" class="ng-binding"><img src="images/template2013/bullet_blue_disc.png" alt="Blue Disk"> What is a Type B Citation?</div>
+            <div id="derp8" class="slideable" style="overflow: hidden; height: 0px; transition-property: height; transition-duration: 250ms; transition-timing-function: ease-in-out;"><div class="slideable_content" style="margin:0 !important; padding:0 !important"><ul><li ng-bind-html="item.answer" class="ng-binding">A Type B citation is for a violation that, if not corrected, may 
+ an immediate risk to the health, safety or personal rights of clients. Examples include faulty medical record keeping and lack of adequate staff training.</li></ul></div></div>
+        </li><!-- end ngIf: faqCtrl.json.length !== undefined --><!-- end ngRepeat: item in faqCtrl.json track by $index --><!-- ngIf: faqCtrl.json.length !== undefined --><li ng-if="faqCtrl.json.length !== undefined" ng-repeat="item in faqCtrl.json track by $index" class="ng-scope">
+            <div slide-toggle="#derp9" class="ng-binding"><img src="images/template2013/bullet_blue_disc.png" alt="Blue Disk"> What is the Facility Evaluation Report?</div>
+            <div id="derp9" class="slideable" style="overflow: hidden; height: 0px; transition-property: height; transition-duration: 250ms; transition-timing-function: ease-in-out;"><div class="slideable_content" style="margin:0 !important; padding:0 !important"><ul><li ng-bind-html="item.answer" class="ng-binding">The Facility Evaluation Report is an inspection report completed by the Licensing Program Analyst (LPA). Information included on the form includes, but is not limited to : the type of visit, whether the visit is announced or unannounced, who the LPA met with, date and time of the visit and a narrative.</li></ul></div></div>
+        </li><!-- end ngIf: faqCtrl.json.length !== undefined --><!-- end ngRepeat: item in faqCtrl.json track by $index --><!-- ngIf: faqCtrl.json.length !== undefined --><li ng-if="faqCtrl.json.length !== undefined" ng-repeat="item in faqCtrl.json track by $index" class="ng-scope">
+            <div slide-toggle="#derp10" class="ng-binding"><img src="images/template2013/bullet_blue_disc.png" alt="Blue Disk"> What is the Complaint Investigation Report?</div>
+            <div id="derp10" class="slideable" style="overflow: hidden; height: 0px; transition-property: height; transition-duration: 250ms; transition-timing-function: ease-in-out;"><div class="slideable_content" style="margin:0 !important; padding:0 !important"><ul><li ng-bind-html="item.answer" class="ng-binding">The Complaint Investigation Report is an official report completed by a Licensing Program Analyst to document allegation(s) received, and includes the date the complaint was received, the investigation findings, and outcome.</li></ul></div></div>
+        </li><!-- end ngIf: faqCtrl.json.length !== undefined --><!-- end ngRepeat: item in faqCtrl.json track by $index --><!-- ngIf: faqCtrl.json.length !== undefined --><li ng-if="faqCtrl.json.length !== undefined" ng-repeat="item in faqCtrl.json track by $index" class="ng-scope">
+            <div slide-toggle="#derp11" class="ng-binding"><img src="images/template2013/bullet_blue_disc.png" alt="Blue Disk"> What is the difference between an 'inconclusive' and an 'unsubstantiated' complaint allegation?</div>
+            <div id="derp11" class="slideable" style="overflow: hidden; height: 0px; transition-property: height; transition-duration: 250ms; transition-timing-function: ease-in-out;"><div class="slideable_content" style="margin:0 !important; padding:0 !important"><ul><li ng-bind-html="item.answer" class="ng-binding">There is no difference between an inconclusive and an unsubstantiated complaint allegation. Both terms mean that there was no preponderance of evidence to prove that an alleged violation occurred.</li></ul></div></div>
+        </li><!-- end ngIf: faqCtrl.json.length !== undefined --><!-- end ngRepeat: item in faqCtrl.json track by $index --><!-- ngIf: faqCtrl.json.length !== undefined --><li ng-if="faqCtrl.json.length !== undefined" ng-repeat="item in faqCtrl.json track by $index" class="ng-scope">
+            <div slide-toggle="#derp12" class="ng-binding"><img src="images/template2013/bullet_blue_disc.png" alt="Blue Disk"> How soon after a visit will a report appear on this site?</div>
+            <div id="derp12" class="slideable" style="overflow: hidden; height: 0px; transition-property: height; transition-duration: 250ms; transition-timing-function: ease-in-out;"><div class="slideable_content" style="margin:0 !important; padding:0 !important"><ul><li ng-bind-html="item.answer" class="ng-binding">Completed reports will be uploaded every week (Sunday).</li></ul></div></div>
+        </li><!-- end ngIf: faqCtrl.json.length !== undefined --><!-- end ngRepeat: item in faqCtrl.json track by $index --><!-- ngIf: faqCtrl.json.length !== undefined --><li ng-if="faqCtrl.json.length !== undefined" ng-repeat="item in faqCtrl.json track by $index" class="ng-scope">
+            <div slide-toggle="#derp13" class="ng-binding"><img src="images/template2013/bullet_blue_disc.png" alt="Blue Disk"> How long are reports kept on this website?</div>
+            <div id="derp13" class="slideable" style="overflow: hidden; height: 0px; transition-property: height; transition-duration: 250ms; transition-timing-function: ease-in-out;"><div class="slideable_content" style="margin:0 !important; padding:0 !important"><ul><li ng-bind-html="item.answer" class="ng-binding">This site contains reports for the most recent 60 months.  All reports beyond 60 months are maintained at the facility and the local state licensing Regional Office.</li></ul></div></div>
+        </li><!-- end ngIf: faqCtrl.json.length !== undefined --><!-- end ngRepeat: item in faqCtrl.json track by $index --><!-- ngIf: faqCtrl.json.length !== undefined --><li ng-if="faqCtrl.json.length !== undefined" ng-repeat="item in faqCtrl.json track by $index" class="ng-scope">
+            <div slide-toggle="#derp14" class="ng-binding"><img src="images/template2013/bullet_blue_disc.png" alt="Blue Disk"> Can I send this information to an email?</div>
+            <div id="derp14" class="slideable" style="overflow: hidden; height: 0px; transition-property: height; transition-duration: 250ms; transition-timing-function: ease-in-out;"><div class="slideable_content" style="margin:0 !important; padding:0 !important"><ul><li ng-bind-html="item.answer" class="ng-binding">Yes, you can email this data to yourself or another person by using the email link at the bottom of the facility table.</li></ul></div></div>
+        </li><!-- end ngIf: faqCtrl.json.length !== undefined --><!-- end ngRepeat: item in faqCtrl.json track by $index --><!-- ngIf: faqCtrl.json.length !== undefined --><li ng-if="faqCtrl.json.length !== undefined" ng-repeat="item in faqCtrl.json track by $index" class="ng-scope">
+            <div slide-toggle="#derp15" class="ng-binding"><img src="images/template2013/bullet_blue_disc.png" alt="Blue Disk"> Can I sign up for an email subscription about a facility I am interested in?</div>
+            <div id="derp15" class="slideable" style="overflow: hidden; height: 0px; transition-property: height; transition-duration: 250ms; transition-timing-function: ease-in-out;"><div class="slideable_content" style="margin:0 !important; padding:0 !important"><ul><li ng-bind-html="item.answer" class="ng-binding">Yes, you can sign up by selecting the Stay Updated button on the Facility Detail page you are viewing and entering your email address in the space provided.  Those subscribers will receive an email notification when a change in the facility profile has occurred, generally on Tuesdays.</li></ul></div></div>
+        </li><!-- end ngIf: faqCtrl.json.length !== undefined --><!-- end ngRepeat: item in faqCtrl.json track by $index --><!-- ngIf: faqCtrl.json.length !== undefined --><li ng-if="faqCtrl.json.length !== undefined" ng-repeat="item in faqCtrl.json track by $index" class="ng-scope">
+            <div slide-toggle="#derp16" class="ng-binding"><img src="images/template2013/bullet_blue_disc.png" alt="Blue Disk"> Can I sign up for more than one email subscription?</div>
+            <div id="derp16" class="slideable" style="overflow: hidden; height: 0px; transition-property: height; transition-duration: 250ms; transition-timing-function: ease-in-out;"><div class="slideable_content" style="margin:0 !important; padding:0 !important"><ul><li ng-bind-html="item.answer" class="ng-binding">There is no limit to the number of subscriptions one may belong to.</li></ul></div></div>
+        </li><!-- end ngIf: faqCtrl.json.length !== undefined --><!-- end ngRepeat: item in faqCtrl.json track by $index --><!-- ngIf: faqCtrl.json.length !== undefined --><li ng-if="faqCtrl.json.length !== undefined" ng-repeat="item in faqCtrl.json track by $index" class="ng-scope">
+            <div slide-toggle="#derp17" class="ng-binding"><img src="images/template2013/bullet_blue_disc.png" alt="Blue Disk"> How do I unsubscribe from the mailing list for the facility(s) I have chosen?</div>
+            <div id="derp17" class="slideable" style="overflow: hidden; height: 0px; transition-property: height; transition-duration: 250ms; transition-timing-function: ease-in-out;"><div class="slideable_content" style="margin:0 !important; padding:0 !important"><ul><li ng-bind-html="item.answer" class="ng-binding">Subscribers will receive an email confirmation for each facility they signed up for containing an unsubscribe link. Furthermore, each email update will have an option to "unsubscribe" at the bottom of the email sent by CDSS.</li></ul></div></div>
+        </li><!-- end ngIf: faqCtrl.json.length !== undefined --><!-- end ngRepeat: item in faqCtrl.json track by $index --><!-- ngIf: faqCtrl.json.length !== undefined --><li ng-if="faqCtrl.json.length !== undefined" ng-repeat="item in faqCtrl.json track by $index" class="ng-scope">
+            <div slide-toggle="#derp18" class="ng-binding"><img src="images/template2013/bullet_blue_disc.png" alt="Blue Disk"> How often is the data updated?</div>
+            <div id="derp18" class="slideable" style="overflow: hidden; height: 0px; transition-property: height; transition-duration: 250ms; transition-timing-function: ease-in-out;"><div class="slideable_content" style="margin:0 !important; padding:0 !important"><ul><li ng-bind-html="item.answer" class="ng-binding">The data is updated weekly.</li></ul></div></div>
+        </li><!-- end ngIf: faqCtrl.json.length !== undefined --><!-- end ngRepeat: item in faqCtrl.json track by $index -->
+        <!-- ngIf: faqCtrl.json.length === undefined -->
+     </ul>
+</div></div>
+
+        </div>
+    </div>
+
+    <!-- Resource Corner Links -->
+
+    <div class="container_style_d">
+        <h5 style="color:White">Consumer and Family Resources</h5>
+        <ul class="transparency-accordion">
+            <li>
+                <div slide-toggle="#contentResCorner"><img src="images/template2013/bullet_blue_disc.png" alt="Blue Disk"> Click to show/hide</div>
+                <div id="contentResCorner" class="slideable" style="margin-left: 1em; overflow: hidden; height: 0px; transition-property: height; transition-duration: 250ms; transition-timing-function: ease-in-out;"><div class="slideable_content" style="margin:0 !important; padding:0 !important">
+                    <p><b>Child Care Program</b></p>
+                    <p>Home Pages</p>
+                    <ul>
+                        <li><a href="https://www.cdss.ca.gov/inforesources/community-care-licensing" target="_blank">Community Care Licensing Division(CCLD) page</a></li>
+                        <li><a href="https://www.cdss.ca.gov/inforesources/child-care-licensing" target="_blank">Child Care Licensing Page(CCL)</a></li>
+                        <li><a href="https://mychildcareplan.org/" target="_blank">My Child Care Plan</a></li>
+                        <li><a href="https://www.cdss.ca.gov/inforesources/child-care-licensing/child-care-advocates" target="_blank">Child Care Advocates</a></li>
+                        <li><a href="https://www.cdss.ca.gov/Portals/9/Additional-Resources/Research-and-Data/DSSDS/030119%20Parent's%20Guide%20to%20Choosing%20Child%20Care_Revision%20Safe%20Sleep.pdf" target="_blank">Parents Guide to Choosing Child Care</a></li>
+                    </ul>
+                    <p>Checklists</p>
+                    <ul>
+                        <li>Facility Inspection checklists are forms provided to the public so as to better understand the Community Care Licensing inspection process.</li>
+                        <li><a href="https://www.cdss.ca.gov/inforesources/forms-brochures/forms-alphabetic-list/i-l" target="_blank">On-line Forms and Publications</a></li>
+                    </ul>
+                    <p>Child Care Pre-Licensing and Standard Inspection Tools</p>
+                    <ul>
+                        <li>Child Care Pre-Licensing Tools are forms provided to the public so as to better prepare individuals for a Pre-Licensing inspection by a Licensing Program Analyst (LPA) with the Community Care Licensing Division.</li>
+                        <li>Child Care Standards Tools are forms provided to the public so as to better prepare an individual for a compliance inspection conducted by a Licensing Program Analyst (LPA) with the Community Care Licensing Division.</li>
+                        <li><a href="https://www.cdss.ca.gov/inforesources/cdss-programs/community-care-licensing/inspection-process-project/care-tools" target="_blank">Compliance and Regulatory Enforcement (CARE) Tools</a></li>
+                    </ul>
+
+                    <p><b>Children’s Residential Program</b></p>
+                    <ul>
+                        <li><a href="https://www.cdss.ca.gov/inforesources/childrens-residential" target="_blank">Children’s Residential Program Homepage</a></li>
+                        <li><a href="https://www.cdss.ca.gov/inforesources/childrens-residential/resources-for-providers/facility-information" target="_blank">Children’s Residential Facility Types</a></li>
+                        <li><a href="https://www.cdss.ca.gov/inforesources/cdss-programs/community-care-licensing/inspection-process-project/care-tools" target="_blank">Childrens Residential Pre-Licensing and Standard Inspection Tools</a></li>
+                    </ul>
+
+                    <p><b>Adult and Senior Care Program</b></p>
+                    <ul>
+                        <li><a href="https://www.cdss.ca.gov/inforesources/adult-care-licensing" target="_blank">Adult Care Home Page</a></li>
+                        <li><a href="https://www.cdss.ca.gov/inforesources/senior-care-licensing" target="_blank">Senior Care Home Page</a></li>
+                    </ul>
+
+                    <p><b>Home Care Services Branch</b></p>
+                    <ul>
+                        <li><a href="https://www.cdss.ca.gov/inforesources/community-care/home-care-services" target="_blank">Home Care Services Branch (home page)</a></li>
+                        <li><a href="https://www.cdss.ca.gov/inforesources/community-care/home-care-services/resources-for-home-care-organizations" target="_blank">Resources for Home Care Organizations</a></li>
+                        <li><a href="https://www.cdss.ca.gov/inforesources/community-care/home-care-services/resources-for-home-care-aides" target="_blank">Resources for Home Care Aides</a></li>
+                        <li><a href="https://www.cdss.ca.gov/inforesources/community-care/home-care-services/resources-for-seniors-and-families" target="_blank">Resources for Seniors and Families</a></li>
+                        <li><a href="https://www.ccld.dss.ca.gov/hcsregistry/registrysearch.aspx" target="_blank">Home Care Aide Registry</a></li>
+                    </ul>
+                </div></div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- PAGE DISCLAIMER -->
+
+    <div class="container_style_e">
+        <h5>Disclaimer</h5>
+        <div class="add_side_padding">
+
+            <b>Questions about this application contact:</b>
+            <ul style="padding-left: 10px;">
+
+                <li>Email: <a href="mailto:cclwebmaster@dss.ca.gov">cclwebmaster@dss.ca.gov</a></li>
+
+            </ul>
+
+            <br>
+            The Community Care Licensing Division of the California Department of Social Services has provided this document search application to provide the public with access to
+            information regarding facilities licensed by the Division.  Such information should only serve as an initial point of inquiry regarding the licensing status and regulatory
+            history of a licensed facility.  To obtain additional information concerning a specific facility, please contact the licensing office responsible for licensing and
+            inspection of the facility.<br>
+            <br>
+            The Department makes no claims, promises, or guarantees about the accuracy, completeness or adequacy of the documents accessible through the use of this application.
+            Accordingly, it disclaims any liability for any errors, omissions or misrepresentations contained in them.  No warranty of any kind, including, but not limited to, express,
+            implied, common law or statutory ones, is given with respect to the use of this application.   No warranties are given with respect to the non-infringement of third party
+            rights and the cybersecurity of the application. <br>
+            <br>
+            <strong>LIMITATION OF LIABILITY </strong><br>
+            CDSS IS NOT LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL OR CONSEQUENTIAL DAMAGES THAT RESULT FROM THE USE OF, OR THE INABILITY TO USE, THIS APPLICATION OR RELIANCE
+            UPON THE CONTENT OF THE MATERIALS ACCESSIBLE THROUGH THE USE OF THIS APPLICATION UNDER ANY CIRCUMSTANCES.<br>
+            <br>
+
+
+        </div>
+
+    </div>
+
+
+
+
+
+    <!-- InstanceEndEditable -->
+</div>
+</div>
+</div>
+
+
+<!-- ui-view-anchor --><div ui-view="footer" autoscroll="false" class="ng-scope"><!--include virtual="/ssi/footer_2.html" -->
+
+<footer id="footer_2" class="clearfix ng-scope" ng-controller="footerController">
+    <stt-class>
+        <a ng-click="scrollToTop(1)">Back to Top</a> <a href="http://www.cdss.ca.gov/Conditions-of-Use">Conditions of Use</a> <a href="http://www.cdss.ca.gov/Privacy-Policy">Privacy Policy</a> <a href="http://www.cdss.ca.gov/Accessibility">Accessibility</a> <a href="http://www.cdss.ca.gov/Contact-Us">Contact Us</a>
+    </stt-class>
+    <p>
+    </p><div>
+        Copyright © 2013-2014 State of California
+    </div>
+    <p></p>
+</footer>
+
+<div id="background_decorative" class="ng-scope">&nbsp;</div>
+</div>
+
+<!-- InstanceBeginEditable name="ContentRightColumn" -->
+</div>
+</div>
+
+
+
+
+
+
+</body></html>

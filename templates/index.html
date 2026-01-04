@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>California Assisted Living Finder - Search RCFE Facilities</title>
+    <meta name="description" content="Find assisted living, memory care, and residential care facilities for the elderly in California. Data from CA Department of Social Services.">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Skip to main content for accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #667eea;
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 100;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            font-size: 0.875rem;
+            opacity: 0.95;
+            margin-bottom: 4px;
+        }
+
+        .attribution {
+            font-size: 0.75rem;
+            opacity: 0.9;
+            margin-top: 4px;
+        }
+
+        .attribution a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .attribution a:hover {
+            opacity: 0.8;
+        }
+
+        .controls-container {
+            background: white;
+            padding: 12px 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .control-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+
+        .control-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .control-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        label {
+            font-weight: 600;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .search-input, .filter-select, .name-search-input {
+            flex: 1;
+            min-width: 200px;
+            padding: 8px 12px;
+            font-size: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            transition: border-color 0.3s;
+        }
+
+        .search-input:focus, .filter-select:focus, .name-search-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .btn {
+            padding: 8px 16px;
+            font-size: 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            min-height: 40px;
+            min-width: 40px;
+        }
+
+        .btn:focus {
+            outline: 3px solid #667eea;
+            outline-offset: 2px;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background: #5568d3;
+            transform: translateY(-1px);
+        }
+
+        .btn-primary:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #f0f2ff;
+        }
+
+        .btn-secondary.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-download {
+            background: #10b981;
+            color: white;
+            font-size: 13px;
+            padding: 8px 14px;
+            min-height: auto;
+        }
+
+        .btn-download:hover {
+            background: #059669;
+        }
+
+        .view-controls {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin: 10px 0;
+        }
+
+        .download-controls {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            font-size: 18px;
+            color: #667eea;
+        }
+
+        .loading::after {
+            content: '...';
+            animation: dots 1.5s steps(4, end) infinite;
+        }
+
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60%, 100% { content: '...'; }
+        }
+
+        /* Main Layout */
+        .main-layout {
+            display: flex;
+            height: calc(100vh - 300px);
+            min-height: 500px;
+            gap: 0;
+            background: white;
+        }
+
+        .map-section {
+            flex: 0 0 60%;
+            position: relative;
+            border-right: 2px solid #e0e0e0;
+        }
+
+        .info-sidebar {
+            flex: 0 0 40%;
+            overflow-y: auto;
+            background: #fafafa;
+        }
+
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Map Legend */
+        .map-legend {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            max-width: 250px;
+        }
+
+        .legend-title {
+            font-weight: 700;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 8px 0;
+            font-size: 13px;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid #333;
+        }
+
+        .legend-color.light { background-color: #9ca3af; border-color: #4b5563; }
+        .legend-color.medium { background-color: #3b82f6; border-color: #1e40af; }
+        .legend-color.dark { background-color: #1f2937; border-color: #000000; }
+
+        /* Info Sidebar */
+        .sidebar-header {
+            background: white;
+            padding: 15px;
+            border-bottom: 2px solid #e0e0e0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .sidebar-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .sidebar-count {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .facilities-list {
+            padding: 10px;
+        }
+
+        .facility-item {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .facility-item:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .facility-item:focus {
+            outline: 3px solid #667eea;
+            outline-offset: 2px;
+        }
+
+        .facility-item.highlighted {
+            border-color: #667eea;
+            background: #f0f2ff;
+        }
+
+        .facility-item.expanded {
+            border-color: #667eea;
+        }
+
+        .facility-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 8px;
+        }
+
+        .facility-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: #333;
+            flex: 1;
+        }
+
+        .distance-badge {
+            background: #667eea;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+            margin-left: 10px;
+        }
+
+        .facility-summary {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .violations-summary {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .violation-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .violation-badge.light {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .violation-badge.medium {
+            background: #93c5fd;
+            color: #1e3a8a;
+        }
+
+        .violation-badge.dark {
+            background: #3b82f6;
+            color: #ffffff;
+        }
+
+        .ownership-warning {
+            background: #fff7ed;
+            color: #9a3412;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            border: 1px solid #fed7aa;
+        }
+
+        .status-badge {
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+
+        .status-badge.pending {
+            background: #fef3c7;
+            color: #92400e;
+            border: 1px solid #fbbf24;
+        }
+
+        .status-badge.probation {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #ef4444;
+        }
+
+        /* Expanded Details */
+        .facility-details {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .detail-row {
+            margin: 8px 0;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .detail-row strong {
+            color: #555;
+            display: inline-block;
+            min-width: 120px;
+        }
+
+        .detail-row a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .detail-row a:hover {
+            text-decoration: underline;
+        }
+
+        /* List-Only View */
+        .list-only-view {
+            padding: 20px;
+            background: white;
+        }
+
+        .facility-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+
+        .facility-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .main-layout {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .map-section {
+                flex: 0 0 400px;
+                border-right: none;
+                border-bottom: 2px solid #e0e0e0;
+            }
+
+            .info-sidebar {
+                flex: 1;
+                max-height: 500px;
+            }
+
+            .control-row {
+                flex-direction: column;
+            }
+
+            .control-group {
+                width: 100%;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Accessibility - High Contrast Focus Indicators */
+        *:focus-visible {
+            outline: 3px solid #667eea;
+            outline-offset: 2px;
+        }
+
+        /* Screen reader only text */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header role="banner">
+        <h1>California Assisted Living Finder</h1>
+        <p class="subtitle">Search RCFEs (Residential Care Facilities for the Elderly) - Commonly called Assisted Living or Memory Care</p>
+        <p class="attribution">Data from <a href="https://www.ccld.dss.ca.gov/" target="_blank" rel="noopener noreferrer">California Department of Social Services</a> • Last updated: January 2, 2026</p>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" role="main">
+        <!-- Search Controls -->
+        <div class="controls-container">
+            <div class="control-row">
+                <div class="control-group" style="flex: 2;">
+                    <label for="address-search" class="sr-only">Enter your address</label>
+                    <input
+                        type="text"
+                        id="address-search"
+                        class="search-input"
+                        placeholder="Enter your address (e.g., 123 Main St, Los Angeles, CA)"
+                        aria-label="Enter your address to search for nearby facilities"
+                        autocomplete="street-address">
+                    <button
+                        id="search-btn"
+                        class="btn btn-primary"
+                        onclick="searchAddress()"
+                        aria-label="Search for facilities near the entered address">
+                        Search
+                    </button>
+                </div>
+            </div>
+
+            <div class="control-row">
+                <div class="control-group">
+                    <label for="name-filter">Facility Name:</label>
+                    <input
+                        type="text"
+                        id="name-filter"
+                        class="name-search-input"
+                        placeholder="Search by facility name..."
+                        aria-label="Filter facilities by name"
+                        onkeyup="filterByName()">
+                </div>
+
+                <div class="control-group">
+                    <label for="size-filter">Facility Size:</label>
+                    <select
+                        id="size-filter"
+                        class="filter-select"
+                        aria-label="Filter facilities by size"
+                        onchange="applyFilters()">
+                        <option value="all">All Sizes</option>
+                        <option value="small">1-6 residents</option>
+                        <option value="medium">7-49 residents</option>
+                        <option value="large">50+ residents</option>
+                    </select>
+                </div>
+
+                <div class="download-controls">
+                    <button
+                        id="download-csv-btn"
+                        class="btn btn-download hidden"
+                        onclick="downloadCSV()"
+                        aria-label="Download search results as CSV file">
+                        📥 Download CSV
+                    </button>
+                    <button
+                        id="readme-btn"
+                        class="btn btn-download"
+                        onclick="openReadme()"
+                        aria-label="View README with statistics and facility lists">
+                        📄 README
+                    </button>
+                    <button
+                        id="download-dict-btn"
+                        class="btn btn-download"
+                        onclick="downloadDataDictionary()"
+                        aria-label="View data dictionary">
+                        📋 Data Dictionary
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- View Toggle -->
+        <div class="view-controls" role="tablist" aria-label="View options">
+            <button
+                id="map-view-btn"
+                class="btn btn-secondary active"
+                onclick="showMapView()"
+                role="tab"
+                aria-selected="true"
+                aria-controls="map-view-panel">
+                🗺️ Map + Details
+            </button>
+            <button
+                id="list-view-btn"
+                class="btn btn-secondary"
+                onclick="showListView()"
+                role="tab"
+                aria-selected="false"
+                aria-controls="list-view-panel">
+                📋 List Only
+            </button>
+        </div>
+
+        <!-- Loading Indicator -->
+        <div id="loading" class="loading hidden" role="status" aria-live="polite">Searching</div>
+
+        <!-- Map + Sidebar View -->
+        <div id="map-view-panel" class="main-layout" role="tabpanel" aria-labelledby="map-view-btn">
+            <!-- Map Section -->
+            <div class="map-section">
+                <div id="map" role="application" aria-label="Interactive map showing facility locations"></div>
+
+                <!-- Map Legend -->
+                <div id="map-legend" class="map-legend hidden" role="region" aria-label="Map legend">
+                    <div class="legend-title">Citation Count</div>
+                    <div style="font-size: 11px; margin-bottom: 8px; color: #666;">Total regulatory citations</div>
+                    <div class="legend-item">
+                        <div class="legend-color light" aria-hidden="true"></div>
+                        <span>0-5 citations</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color medium" aria-hidden="true"></div>
+                        <span>6-15 citations</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color dark" aria-hidden="true"></div>
+                        <span>16+ citations</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info Sidebar -->
+            <aside class="info-sidebar" role="complementary" aria-label="Facility details">
+                <div class="sidebar-header">
+                    <div class="sidebar-title">Nearby Facilities</div>
+                    <div id="sidebar-count" class="sidebar-count">Select a location to search</div>
+                </div>
+                <div id="facilities-list" class="facilities-list" role="list"></div>
+            </aside>
+        </div>
+
+        <!-- List-Only View -->
+        <div id="list-view-panel" class="list-only-view hidden" role="tabpanel" aria-labelledby="list-view-btn">
+            <div id="list-only-facilities" role="list"></div>
+        </div>
+    </main>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+        // Global variables
+        let map = null;
+        let markers = [];
+        let allFacilities = [];
+        let filteredFacilities = [];
+        let currentView = 'map';
+        let expandedFacilityId = null;
+        let isInitialSearch = false; // Track if this is initial address search vs. map movement
+
+        // Initialize map
+        function initMap() {
+            if (!map) {
+                map = L.map('map').setView([36.7783, -119.4179], 6);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap contributors',
+                    maxZoom: 19
+                }).addTo(map);
+            }
+        }
+
+        initMap();
+
+        // Helper function to format facility status
+        function getStatusBadge(status) {
+            if (status === 'PENDING') {
+                return '<span class="status-badge pending">PENDING</span>';
+            } else if (status === 'ON PROBATION') {
+                return '<span class="status-badge probation">ON PROBATION</span>';
+            }
+            return ''; // LICENSED facilities don't get a badge
+        }
+
+        // Search for facilities
+        async function searchAddress() {
+            const addressInput = document.getElementById('address-search');
+            const address = addressInput.value.trim();
+
+            if (!address) {
+                alert('Please enter an address');
+                return;
+            }
+
+            // Show loading
+            document.getElementById('loading').classList.remove('hidden');
+            document.getElementById('search-btn').disabled = true;
+
+            try {
+                // Geocode address
+                const geocodeResponse = await fetch('/api/geocode', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ address })
+                });
+
+                const geocodeData = await geocodeResponse.json();
+
+                if (!geocodeData.success) {
+                    alert('Could not find address. Please try again.');
+                    return;
+                }
+
+                // Search facilities
+                const searchResponse = await fetch('/api/search', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        lat: geocodeData.lat,
+                        lon: geocodeData.lon,
+                        radius_miles: 50
+                    })
+                });
+
+                const searchData = await searchResponse.json();
+
+                if (searchData.success) {
+                    allFacilities = searchData.facilities;
+                    filteredFacilities = [...allFacilities];
+                    isInitialSearch = true; // Mark as initial search to auto-zoom
+                    applyFilters();
+                    displayResults();
+                }
+
+            } catch (error) {
+                console.error('Search error:', error);
+                alert('An error occurred. Please try again.');
+            } finally {
+                document.getElementById('loading').classList.add('hidden');
+                document.getElementById('search-btn').disabled = false;
+            }
+        }
+
+        // Filter facilities by name
+        function filterByName() {
+            const nameQuery = document.getElementById('name-filter').value.toLowerCase();
+            applyFilters();
+        }
+
+        // Apply all filters
+        function applyFilters() {
+            const nameQuery = document.getElementById('name-filter').value.toLowerCase();
+            const sizeFilter = document.getElementById('size-filter').value;
+
+            filteredFacilities = allFacilities.filter(facility => {
+                // Name filter
+                if (nameQuery && !facility.name.toLowerCase().includes(nameQuery)) {
+                    return false;
+                }
+
+                // Size filter
+                if (sizeFilter !== 'all') {
+                    if (sizeFilter === 'small' && facility.capacity > 6) return false;
+                    if (sizeFilter === 'medium' && (facility.capacity < 7 || facility.capacity >= 50)) return false;
+                    if (sizeFilter === 'large' && facility.capacity < 50) return false;
+                }
+
+                return true;
+            });
+
+            displayResults();
+        }
+
+        // Display results
+        function displayResults() {
+            // Show download button
+            document.getElementById('download-csv-btn').classList.remove('hidden');
+
+            // Update map and sidebar
+            updateMap();
+            updateSidebar();
+            updateListView();
+
+            // Show legend
+            document.getElementById('map-legend').classList.remove('hidden');
+
+            // Announce results to screen readers
+            const announcement = document.createElement('div');
+            announcement.setAttribute('role', 'status');
+            announcement.setAttribute('aria-live', 'polite');
+            announcement.className = 'sr-only';
+            announcement.textContent = `Search complete. Found ${filteredFacilities.length} facilities.`;
+            document.body.appendChild(announcement);
+            setTimeout(() => announcement.remove(), 1000);
+        }
+
+        // Update map with markers
+        function updateMap() {
+            // Clear existing markers
+            markers.forEach(marker => marker.remove());
+            markers = [];
+
+            if (filteredFacilities.length === 0) {
+                return;
+            }
+
+            const bounds = [];
+
+            filteredFacilities.forEach((facility, index) => {
+                // Determine marker shade (neutral gradient: grey → blue → black)
+                let markerUrl;
+                if (facility.shade === 'light') {
+                    markerUrl = 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-grey.png';
+                } else if (facility.shade === 'medium') {
+                    markerUrl = 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png';
+                } else {
+                    markerUrl = 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-black.png';
+                }
+
+                const icon = L.icon({
+                    iconUrl: markerUrl,
+                    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
+                    iconSize: [25, 41],
+                    iconAnchor: [12, 41],
+                    popupAnchor: [1, -34],
+                    shadowSize: [41, 41]
+                });
+
+                const dssUrl = `https://www.ccld.dss.ca.gov/carefacilitysearch/FacDetail/${facility.facility_number}`;
+
+                const marker = L.marker([facility.lat, facility.lon], { icon })
+                    .bindPopup(`
+                        <b>${facility.name}</b> ${getStatusBadge(facility.status)}<br>
+                        ${facility.distance} miles away<br>
+                        ${facility.address}, ${facility.city}<br>
+                        <b>Total Citations:</b> ${facility.total_citations}<br>
+                        <a href="${dssUrl}" target="_blank" rel="noopener noreferrer">View Details on DSS Website</a>
+                    `)
+                    .addTo(map);
+
+                // Highlight facility in sidebar on marker hover
+                marker.on('mouseover', () => {
+                    highlightFacilityInSidebar(facility.facility_number);
+                });
+
+                marker.on('mouseout', () => {
+                    unhighlightFacilityInSidebar(facility.facility_number);
+                });
+
+                // Click to expand in sidebar
+                marker.on('click', () => {
+                    expandFacilityInSidebar(facility.facility_number);
+                    scrollToFacility(facility.facility_number);
+                });
+
+                markers.push(marker);
+                bounds.push([facility.lat, facility.lon]);
+            });
+
+            // Fit map to show all markers (only on initial search, not manual map movements)
+            if (bounds.length > 0 && isInitialSearch) {
+                map.fitBounds(bounds, { padding: [50, 50] });
+                isInitialSearch = false; // Reset flag
+            }
+
+            // Add map movement listener for dynamic search
+            map.off('moveend', searchMapCenter); // Remove old listener if exists
+            map.on('moveend', searchMapCenter);
+        }
+
+        // Search for facilities at current map center when map is moved
+        let searchTimeout;
+        async function searchMapCenter() {
+            // Debounce to avoid too many searches
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(async () => {
+                if (!map) return;
+
+                const center = map.getCenter();
+
+                try {
+                    const searchResponse = await fetch('/api/search', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            lat: center.lat,
+                            lon: center.lng,
+                            radius_miles: 50
+                        })
+                    });
+
+                    const searchData = await searchResponse.json();
+
+                    if (searchData.success) {
+                        allFacilities = searchData.facilities;
+                        filteredFacilities = [...allFacilities];
+                        applyFilters();
+                        displayResults();
+                    }
+                } catch (error) {
+                    console.error('Error searching map area:', error);
+                }
+            }, 1000); // Wait 1 second after user stops moving map
+        }
+
+        // Update sidebar with facilities
+        function updateSidebar() {
+            const sidebarCount = document.getElementById('sidebar-count');
+            const facilitiesList = document.getElementById('facilities-list');
+
+            sidebarCount.textContent = `${filteredFacilities.length} facilities found`;
+            facilitiesList.innerHTML = '';
+
+            filteredFacilities.forEach((facility, index) => {
+                const item = document.createElement('div');
+                item.className = 'facility-item';
+                item.setAttribute('role', 'listitem');
+                item.setAttribute('tabindex', '0');
+                item.setAttribute('data-facility-id', facility.facility_number);
+                item.setAttribute('aria-label', `${facility.name}, ${facility.distance} miles away`);
+
+                const isExpanded = expandedFacilityId === facility.facility_number;
+
+                const dssUrl = `https://www.ccld.dss.ca.gov/carefacilitysearch/FacDetail/${facility.facility_number}`;
+
+                item.innerHTML = `
+                    <div class="facility-header-row">
+                        <div class="facility-name">${facility.name} ${getStatusBadge(facility.status)}</div>
+                        <div class="distance-badge">${facility.distance} mi</div>
+                    </div>
+                    <div class="facility-summary">
+                        ${facility.address}, ${facility.city}, CA ${facility.zip}
+                    </div>
+                    <div class="violations-summary">
+                        <span class="violation-badge ${facility.shade}">
+                            ${facility.total_citations} citation${facility.total_citations !== 1 ? 's' : ''}
+                        </span>
+                        ${facility.ownership_change ? '<span class="ownership-warning">🔔 Recent ownership change</span>' : ''}
+                    </div>
+                    ${isExpanded ? `
+                        <div class="facility-details">
+                            <div class="detail-row"><strong>Status:</strong> ${facility.status}</div>
+                            <div class="detail-row"><strong>Phone:</strong> <a href="tel:${facility.phone}">${facility.phone}</a></div>
+                            <div class="detail-row"><strong>Capacity:</strong> ${facility.capacity} residents</div>
+                            <div class="detail-row"><strong>Total Citations:</strong> ${facility.total_citations}</div>
+                            <div class="detail-row"><strong>License Date:</strong> ${facility.ownership_change ? '⚠️ Within last year (new ownership)' : 'More than 1 year ago'}</div>
+                            <div class="detail-row">
+                                <a href="${dssUrl}" target="_blank" rel="noopener noreferrer">View Full Details on DSS Website →</a>
+                            </div>
+                        </div>
+                    ` : ''}
+                `;
+
+                // Click/Enter to expand
+                item.addEventListener('click', () => toggleFacilityExpansion(facility.facility_number));
+                item.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        toggleFacilityExpansion(facility.facility_number);
+                    }
+                });
+
+                // Hover to highlight on map
+                item.addEventListener('mouseenter', () => {
+                    const marker = markers[index];
+                    if (marker) {
+                        marker.openPopup();
+                    }
+                });
+
+                facilitiesList.appendChild(item);
+            });
+        }
+
+        // Update list-only view
+        function updateListView() {
+            const listContainer = document.getElementById('list-only-facilities');
+            listContainer.innerHTML = '';
+
+            filteredFacilities.forEach(facility => {
+                const card = document.createElement('div');
+                card.className = 'facility-card';
+                card.setAttribute('role', 'listitem');
+
+                const dssUrl = `https://www.ccld.dss.ca.gov/carefacilitysearch/FacDetail/${facility.facility_number}`;
+
+                card.innerHTML = `
+                    <div class="facility-header-row">
+                        <div class="facility-name">${facility.name} ${getStatusBadge(facility.status)}</div>
+                        <div class="distance-badge">${facility.distance} miles</div>
+                    </div>
+                    <div class="detail-row"><strong>Status:</strong> ${facility.status}</div>
+                    <div class="detail-row"><strong>Address:</strong> ${facility.address}, ${facility.city}, CA ${facility.zip}</div>
+                    <div class="detail-row"><strong>Phone:</strong> <a href="tel:${facility.phone}">${facility.phone}</a></div>
+                    <div class="detail-row"><strong>Capacity:</strong> ${facility.capacity} residents</div>
+                    <div class="detail-row">
+                        <a href="${dssUrl}" target="_blank" rel="noopener noreferrer">View Full Details on DSS Website →</a>
+                    </div>
+                    <div style="margin-top: 10px;">
+                        <div class="violation-badge ${facility.shade}" style="display: inline-block; margin-bottom: 4px;">
+                            <strong>Total Citations:</strong> ${facility.total_citations}
+                        </div>
+                        ${facility.ownership_change ? '<div style="margin-top: 4px;"><span class="ownership-warning">🔔 Recent ownership change</span></div>' : ''}
+                    </div>
+                `;
+
+                listContainer.appendChild(card);
+            });
+        }
+
+        // Toggle facility expansion
+        function toggleFacilityExpansion(facilityId) {
+            if (expandedFacilityId === facilityId) {
+                expandedFacilityId = null;
+            } else {
+                expandedFacilityId = facilityId;
+            }
+            updateSidebar();
+        }
+
+        // Expand facility in sidebar
+        function expandFacilityInSidebar(facilityId) {
+            expandedFacilityId = facilityId;
+            updateSidebar();
+        }
+
+        // Highlight facility in sidebar
+        function highlightFacilityInSidebar(facilityId) {
+            const items = document.querySelectorAll('.facility-item');
+            items.forEach(item => {
+                if (item.getAttribute('data-facility-id') === facilityId) {
+                    item.classList.add('highlighted');
+                }
+            });
+        }
+
+        // Unhighlight facility in sidebar
+        function unhighlightFacilityInSidebar(facilityId) {
+            const items = document.querySelectorAll('.facility-item');
+            items.forEach(item => {
+                if (item.getAttribute('data-facility-id') === facilityId) {
+                    item.classList.remove('highlighted');
+                }
+            });
+        }
+
+        // Scroll to facility in sidebar
+        function scrollToFacility(facilityId) {
+            const item = document.querySelector(`[data-facility-id="${facilityId}"]`);
+            if (item) {
+                item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                item.focus();
+            }
+        }
+
+        // View controls
+        function showMapView() {
+            currentView = 'map';
+            document.getElementById('map-view-panel').classList.remove('hidden');
+            document.getElementById('list-view-panel').classList.add('hidden');
+            document.getElementById('map-view-btn').classList.add('active');
+            document.getElementById('list-view-btn').classList.remove('active');
+            document.getElementById('map-view-btn').setAttribute('aria-selected', 'true');
+            document.getElementById('list-view-btn').setAttribute('aria-selected', 'false');
+
+            // Refresh map
+            if (map) {
+                setTimeout(() => map.invalidateSize(), 100);
+            }
+        }
+
+        function showListView() {
+            currentView = 'list';
+            document.getElementById('map-view-panel').classList.add('hidden');
+            document.getElementById('list-view-panel').classList.remove('hidden');
+            document.getElementById('map-view-btn').classList.remove('active');
+            document.getElementById('list-view-btn').classList.add('active');
+            document.getElementById('map-view-btn').setAttribute('aria-selected', 'false');
+            document.getElementById('list-view-btn').setAttribute('aria-selected', 'true');
+        }
+
+        // Download CSV
+        function downloadCSV() {
+            if (filteredFacilities.length === 0) {
+                alert('No facilities to download');
+                return;
+            }
+
+            const headers = [
+                'Name', 'Status', 'Address', 'City', 'State', 'ZIP', 'Phone', 'Distance (miles)',
+                'Capacity',
+                'Total Citations',
+                'Recent Ownership Change',
+                'DSS Details URL'
+            ];
+
+            const rows = filteredFacilities.map(f => [
+                f.name, f.status, f.address, f.city, f.state, f.zip, f.phone, f.distance,
+                f.capacity,
+                f.total_citations,
+                f.ownership_change ? 'Yes' : 'No',
+                `https://www.ccld.dss.ca.gov/carefacilitysearch/FacDetail/${f.facility_number}`
+            ]);
+
+            const csvContent = [
+                headers.join(','),
+                ...rows.map(row => row.map(cell => `"${cell}"`).join(','))
+            ].join('\n');
+
+            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `rcfe-facilities-${new Date().toISOString().split('T')[0]}.csv`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // Open README
+        function openReadme() {
+            window.open('/static/README.md', '_blank');
+        }
+
+        // Download Data Dictionary
+        function downloadDataDictionary() {
+            window.open('/static/DATA_DICTIONARY.md', '_blank');
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            // Ctrl/Cmd + K to focus search
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                document.getElementById('address-search').focus();
+            }
+        });
+
+        // Allow Enter key to trigger search
+        document.getElementById('address-search').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                searchAddress();
+            }
+        });
+    </script>
+
+    <!-- Footer with Disclaimer -->
+    <footer style="background-color: #f3f4f6; padding: 20px; text-align: center; font-size: 12px; color: #6b7280; border-top: 1px solid #e5e7eb; margin-top: 20px;">
+        This is a personal project to help families find California assisted living facilities. Data comes from the California Department of Social Services and is updated weekly. This is an MVP (minimum viable product) - please verify all information directly with facilities and DSS before making decisions.
+    </footer>
+</body>
+</html>

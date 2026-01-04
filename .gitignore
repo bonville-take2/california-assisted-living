@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# Flask
+instance/
+.webassets-cache
+
+# Logs
+logs/*.log
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Temporary files
+*.swp
+*.swo
+*~
+
+# Don't ignore the example logs directory structure
+!logs/.gitkeep
+
+# Previous data backups (optional - keep if you want version history)
+data/rcfe_data_previous.csv
+
+# Playwright browsers (will be installed on server)
+.cache/ms-playwright/
+
+# Environment variables
+.env
+.env.local
